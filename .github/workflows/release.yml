@@ -41,7 +41,8 @@ jobs:
       - name: Install the build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gettext
+          # testparm lets the unit tests compare the parser with Samba
+          sudo apt-get install -y gettext samba-common-bin
 
       - name: Run the unit tests
         run: make unit-check
@@ -55,6 +56,13 @@ jobs:
         run: |
           deb=$(ls cockpit-shares_*_all.deb)
           if gh release view "$TAG" >/dev/null 2>&1; then
+              # replace the packages of earlier runs that had another file name
+              for old in $(gh release view "$TAG" --json assets --jq '.assets[].name'); do
+                  case "$old" in
+                      "$deb") ;;
+                      cockpit-shares_*_all.deb) gh release delete-asset "$TAG" "$old" --yes ;;
+                  esac
+              done
               gh release upload "$TAG" "$deb" --clobber
           else
               gh release create "$TAG" "$deb" --title "cockpit-shares $TAG" --generate-notes

@@ -163,6 +163,27 @@ print-version:
 dist: $(TARFILE)
 	@ls -1 $(TARFILE)
 
+# Debian package with the prebuilt page: the target machine needs neither
+# Node.js nor npm. Only dpkg-deb is needed besides the build dependencies.
+DEBFILE = $(RPM_NAME)_$(VERSION)_all.deb
+DEB_ROOT = tmp/deb
+
+deb: $(DEBFILE)
+	@ls -1 $(DEBFILE)
+
+$(DEBFILE): $(DIST_TEST) po/LINGUAS packaging/debian/control.in packaging/debian/copyright
+	NODE_ENV=production ./build.js
+	rm -rf $(DEB_ROOT)
+	$(MAKE) install DESTDIR=$(CURDIR)/$(DEB_ROOT) PREFIX=/usr
+	find $(DEB_ROOT) -name '*.map' -delete
+	install -D -m 644 packaging/debian/copyright $(DEB_ROOT)/usr/share/doc/$(RPM_NAME)/copyright
+	mkdir -p $(DEB_ROOT)/DEBIAN
+	sed -e 's/@VERSION@/$(VERSION)/' -e "s/@SIZE@/$$(du -sk $(DEB_ROOT)/usr | cut -f1)/" \
+		packaging/debian/control.in > $(DEB_ROOT)/DEBIAN/control
+	dpkg-deb --root-owner-group --build $(DEB_ROOT) $@
+	# leave a development build behind, as "make" does
+	./build.js
+
 # source files: the tracked files of a git checkout, or this list
 SOURCE_FILES = $(shell (git ls-files 2>/dev/null | grep .) || echo \
 	.eslintignore .eslintrc.json .gitignore .stylelintrc.json LICENSE Makefile README.md \
@@ -250,10 +271,17 @@ bots: $(COCKPIT_REPO_STAMP)
 	test/common/make-bots
 
 $(NODE_MODULES_TEST): package.json
+	@command -v npm >/dev/null 2>&1 || { \
+	    echo "error: npm is required to build this page. Install Node.js and npm, for example:"; \
+	    echo "  Debian, Ubuntu:   sudo apt install nodejs npm gettext make"; \
+	    echo "  Fedora, RHEL:     sudo dnf install nodejs npm gettext make"; \
+	    echo "  openSUSE:         sudo zypper in nodejs npm gettext-runtime make"; \
+	    echo "  Arch Linux:       sudo pacman -S nodejs npm gettext make"; \
+	    exit 1; }
 	# if it exists already, npm install won't update it; force that so that we always get up-to-date packages
 	rm -f package-lock.json
 	# unset NODE_ENV, skips devDependencies otherwise; this often hangs, so try a few times
 	for _ in `seq 3`; do timeout 10m env -u NODE_ENV npm install --ignore-scripts && exit 0; done; exit 1
 	env -u NODE_ENV npm prune
 
-.PHONY: all clean install devel-install devel-uninstall print-version dist node-cache rpm prepare-check check vm print-vm update-po catalog unit-check typecheck
+.PHONY: deb all clean install devel-install devel-uninstall print-version dist node-cache rpm prepare-check check vm print-vm update-po catalog unit-check typecheck

@@ -1,0 +1,13 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: cockpit-shares
+Source: https://github.com/frousselet/cockpit-shares
+
+Files: *
+Copyright: François Rousselet
+License: LGPL-2.1-or-later
+ On Debian systems, the complete text of the GNU Lesser General Public
+ License version 2.1 can be found in "/usr/share/common-licenses/LGPL-2.1".
+ .
+ The JavaScript bundle includes third party npm modules (PatternFly, React
+ and others); their licenses are listed in
+ /usr/share/cockpit/shares/index.js.LEGAL.txt.

@@ -18,6 +18,7 @@
 /bots
 /cockpit-*.spec
 /cockpit-*.tar.xz
+/cockpit-shares_*.deb
 /cockpit-shares.spec
 /dist/
 /metafile.json

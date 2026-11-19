@@ -78,6 +78,22 @@ whitespace, `[global]` and `[globals]`, parameters before the first section
 belong to `[global]`, the last occurrence wins. A unit test compares the
 parser's reading with `testparm` on several files.
 
+## Installing on Debian or Ubuntu
+
+Download `cockpit-shares_VERSION_all.deb` and install it with apt, which also
+pulls the dependencies:
+
+```bash
+sudo apt install ./cockpit-shares_0.1.0_all.deb
+```
+
+The package contains the prebuilt page: Node.js and npm are not needed on the
+machine running Cockpit. Build it with:
+
+```bash
+make deb
+```
+
 ## Building and installing
 
 Build dependencies: `make`, `gettext`, Node.js and npm (Node.js 22.18 or newer
@@ -99,8 +115,8 @@ make devel-install
 
 then run `make` (or `make watch`) and reload the page in Cockpit.
 
-Packaging: `make rpm` (Fedora, RHEL, openSUSE) and
-`packaging/arch/PKGBUILD.in` (Arch Linux).
+Packaging: `make deb` (Debian, Ubuntu), `make rpm` (Fedora, RHEL, openSUSE)
+and `packaging/arch/PKGBUILD.in` (Arch Linux).
 
 ## Tests
 

@@ -179,7 +179,29 @@
   margin-block-start: var(--pf-t--global--spacer--xs);
 }
 
-// cards of guided settings: two columns on wide screens
-.shares-cards.ct-cards-grid > .pf-v6-c-card.ct-card-info {
-  grid-column: auto;
+// sections of the details pages
+.shares-tabs {
+  margin-block-end: var(--pf-t--global--spacer--md);
+}
+
+.shares-tab-count {
+  margin-inline-start: var(--pf-t--global--spacer--sm);
+}
+
+// the header of a section card describes it, the tab already names it
+.ct-card.pf-v6-c-card .shares-group-description {
+  font-size: var(--pf-t--global--font--size--body--default);
+  font-weight: var(--pf-t--global--font--weight--body--default);
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+.shares-settings {
+  // one setting per line, labels on a single line on wide screens
+  row-gap: var(--pf-t--global--spacer--md);
+}
+
+.shares-param-origin {
+  margin-inline-start: var(--pf-t--global--spacer--sm);
+  font-size: var(--pf-t--global--font--size--sm);
+  font-style: italic;
 }

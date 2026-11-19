@@ -89,6 +89,7 @@ async function until(fn, what, timeout = 15000) {
     step('disable and enable');
 
     // guided form: make it read only for a user
+    await f.click('role=tab[name=/^Access/]');
     await f.click('#smb-share-access-edit');
     await f.waitForSelector('#smb-edit-access');
     await f.selectOption('#smb-field-access-guest-ok', 'no');
@@ -102,6 +103,7 @@ async function until(fn, what, timeout = 15000) {
     step('edit the access card');
 
     // add any parameter with the generic dialog
+    await f.click('role=tab[name=/^All parameters/]');
     await f.click('#smb-param-add-button');
     await f.waitForSelector('#smb-param-add');
     await f.click('#smb-param-add-name input');
@@ -121,6 +123,7 @@ async function until(fn, what, timeout = 15000) {
     step('reset a parameter');
 
     // VFS module with its recommended options
+    await f.click('role=tab[name=/^VFS modules/]');
     await f.click('#smb-vfs-add-button');
     await f.waitForSelector('#smb-vfs-add');
     await f.selectOption('#smb-vfs-module', 'recycle');

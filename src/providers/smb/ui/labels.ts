@@ -45,6 +45,7 @@ export interface FieldSpec {
 export interface FieldGroup {
     id: string;
     title: () => string;
+    description: () => string;
     fields: FieldSpec[];
 }
 
@@ -53,6 +54,7 @@ export interface FieldGroup {
 export const SHARE_GENERAL: FieldGroup = {
     id: "general",
     title: () => _("General"),
+    description: () => _("Directory, description and visibility of the share."),
     fields: [
         { name: "path", label: () => _("Path"), kind: "path", help: () => _("Directory made available by this share.") },
         { name: "comment", label: () => _("Description"), help: () => _("Shown next to the share name by clients.") },
@@ -66,6 +68,7 @@ export const SHARE_GENERAL: FieldGroup = {
 export const SHARE_ACCESS: FieldGroup = {
     id: "access",
     title: () => _("Access"),
+    description: () => _("Users, groups and hosts allowed to connect."),
     fields: [
         { name: "guest ok", label: () => _("Allow guest access"), help: () => _("Clients can connect without a password, as the guest account.") },
         { name: "guest only", label: () => _("Guest access only") },
@@ -84,6 +87,7 @@ export const SHARE_ACCESS: FieldGroup = {
 export const SHARE_PERMISSIONS: FieldGroup = {
     id: "permissions",
     title: () => _("Permissions"),
+    description: () => _("Owner and permissions of the files and directories created through the share."),
     fields: [
         { name: "force user", label: () => _("Access files as user") },
         { name: "force group", label: () => _("Access files as group") },
@@ -109,6 +113,7 @@ export const SHARE_PERMISSIONS: FieldGroup = {
 export const GLOBAL_IDENTITY: FieldGroup = {
     id: "identity",
     title: () => _("Server identity"),
+    description: () => _("Names under which the server appears on the network."),
     fields: [
         { name: "workgroup", label: () => _("Workgroup or domain") },
         { name: "netbios name", label: () => _("Server name"), help: () => _("NetBIOS name, 15 characters at most.") },
@@ -121,6 +126,7 @@ export const GLOBAL_IDENTITY: FieldGroup = {
 export const GLOBAL_SECURITY: FieldGroup = {
     id: "security",
     title: () => _("Security"),
+    description: () => _("Authentication, protocol versions, encryption and signing."),
     fields: [
         { name: "security", label: () => _("Authentication") },
         { name: "map to guest", label: () => _("Map unknown users to guest") },
@@ -139,6 +145,7 @@ export const GLOBAL_SECURITY: FieldGroup = {
 export const GLOBAL_NETWORK: FieldGroup = {
     id: "network",
     title: () => _("Network"),
+    description: () => _("Interfaces, ports and name announcement."),
     fields: [
         { name: "interfaces", label: () => _("Interfaces"), help: () => _("Interface names or addresses, for example eth0 192.168.1.10/24.") },
         { name: "bind interfaces only", label: () => _("Listen on these interfaces only") },
@@ -154,6 +161,7 @@ export const GLOBAL_NETWORK: FieldGroup = {
 export const GLOBAL_LOGGING: FieldGroup = {
     id: "logging",
     title: () => _("Logging"),
+    description: () => _("Log level and destinations."),
     fields: [
         { name: "log level", label: () => _("Log level") },
         { name: "logging", label: () => _("Log destinations") },
@@ -165,6 +173,7 @@ export const GLOBAL_LOGGING: FieldGroup = {
 export const GLOBAL_SHARING: FieldGroup = {
     id: "sharing",
     title: () => _("File sharing"),
+    description: () => _("Printers, user shares and UNIX extensions."),
     fields: [
         { name: "load printers", label: () => _("Share printers") },
         { name: "printing", label: () => _("Printing system") },

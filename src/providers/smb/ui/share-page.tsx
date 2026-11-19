@@ -17,7 +17,6 @@ import { Label } from "@patternfly/react-core/dist/esm/components/Label/index.js
 import { Page, PageBreadcrumb, PageSection } from "@patternfly/react-core/dist/esm/components/Page/index.js";
 import { Switch } from "@patternfly/react-core/dist/esm/components/Switch/index.js";
 import { Flex, FlexItem } from "@patternfly/react-core/dist/esm/layouts/Flex/index.js";
-import { Gallery } from "@patternfly/react-core/dist/esm/layouts/Gallery/index.js";
 import { Stack } from "@patternfly/react-core/dist/esm/layouts/Stack/index.js";
 
 import { useDialogs } from "dialogs";
@@ -25,7 +24,7 @@ import { EmptyStatePanel } from "cockpit-components-empty-state";
 import { ListingTable } from "cockpit-components-table";
 
 import { useSmb, type SmbState } from "../state.tsx";
-import { parseBoolean } from "../smbconf.ts";
+import { parseBoolean, splitList, isGlobalSection } from "../smbconf.ts";
 import {
     statPath, createDirectory, getSelinuxBooleans, labelForSamba, setSelinuxBoolean, closeShare,
 } from "../backend.ts";
@@ -33,7 +32,8 @@ import { selinuxType, SELINUX_SHAREABLE_TYPES, type PathInfo } from "../parsers.
 import { ErrorAlert, formatDate } from "../../../lib/utils.tsx";
 import { SHARE_GENERAL, SHARE_ACCESS, SHARE_PERMISSIONS, type FieldGroup } from "./labels.ts";
 import { FieldGroupDialog, ConfirmDialog, fallbackValue } from "./dialogs.tsx";
-import { displayValue } from "./param-field.tsx";
+import { displayValue, definitionOf } from "./param-field.tsx";
+import { SectionTabs } from "./tabs.tsx";
 import { ParameterTable } from "./param-table.tsx";
 import { VfsCard } from "./vfs-card.tsx";
 import { ShareActions, specialLabel, setShareEnabled, useSmbStatus, netbiosName } from "./shares.tsx";
@@ -41,39 +41,52 @@ import { SmbNotices } from "./status-card.tsx";
 
 const _ = cockpit.gettext;
 
-/** Card summarizing a group of curated parameters, with an Edit dialog. */
+/** Number of parameters of a group that are set in the section. */
+export function customizedCount(smb: SmbState, section: string, group: FieldGroup): number {
+    return group.fields.filter(f => smb.config.conf.get(section, f.name) !== undefined).length;
+}
+
+/** One group of curated parameters, full width, with its Edit dialog. */
 export const FieldGroupCard = ({ section, group, id }: { section: string, group: FieldGroup, id: string }) => {
     const smb = useSmb();
     const Dialogs = useDialogs();
-    const global = section.toLowerCase() === "global";
+    const global = isGlobalSection(section);
     return (
-        <Card isPlain className="ct-card ct-card-info" id={id}>
+        <Card isPlain className="ct-card shares-group" id={id}>
             <CardHeader actions={{
                 actions: smb.admin
                     ? <Button variant="secondary" id={id + "-edit"} onClick={() => Dialogs.show(<FieldGroupDialog section={section} group={group} />)}>{_("Edit")}</Button>
                     : null,
-            }}
-            >
-                <CardTitle component="h2">{group.title()}</CardTitle>
+            }}>
+                <CardTitle component="h2" className="shares-group-description">{group.description()}</CardTitle>
             </CardHeader>
             <CardBody>
-                <DescriptionList isHorizontal isCompact horizontalTermWidthModifier={{ default: "18ch" }}>
+                <DescriptionList isHorizontal isCompact className="shares-settings"
+                                 horizontalTermWidthModifier={{ default: "14rem", lg: "20rem" }}>
                     {group.fields.map(f => {
+                        const def = definitionOf(f.name);
+                        if (!global && def && "context" in def && def.context === "G")
+                            return null;
                         const explicit = smb.config.conf.get(section, f.name);
                         const fallback = fallbackValue(smb, section, f.name);
-                        if (explicit === undefined && (fallback === undefined || fallback === "") && f.kind !== "principals" && f.name !== "path")
-                            return null;
+                        let shown: React.ReactNode;
+                        if (explicit !== undefined) {
+                            shown = <span className="shares-param-value">{displayValue(f.name, explicit) || <em>{_("empty")}</em>}</span>;
+                        } else {
+                            const text = fallback
+                                ? displayValue(f.name, fallback)
+                                : (f.kind === "principals" ? (f.name === "valid users" ? _("Everyone") : _("Nobody")) : _("not set"));
+                            shown = (
+                                <span className="shares-param-fallback">
+                                    {text}
+                                    {fallback ? <span className="shares-param-origin">{global ? _("Samba default") : _("inherited")}</span> : null}
+                                </span>
+                            );
+                        }
                         return (
                             <DescriptionListGroup key={f.name}>
                                 <DescriptionListTerm>{f.label()}</DescriptionListTerm>
-                                <DescriptionListDescription data-param={f.name}>
-                                    {explicit !== undefined
-                                        ? (displayValue(f.name, explicit) || <em>{_("empty")}</em>)
-                                        : <span className="shares-param-fallback">
-                                            {fallback ? displayValue(f.name, fallback) : (f.kind === "principals" ? (f.name === "valid users" ? _("Everyone") : _("Nobody")) : _("not set"))}
-                                            {!global && fallback ? " " + _("(inherited)") : ""}
-                                        </span>}
-                                </DescriptionListDescription>
+                                <DescriptionListDescription data-param={f.name}>{shown}</DescriptionListDescription>
                             </DescriptionListGroup>
                         );
                     })}
@@ -182,7 +195,7 @@ const Connections = ({ smb, share }: { smb: SmbState, share: string }) => {
                     </Button>),
             }}
             >
-                <CardTitle component="h2">{_("Connected clients")}</CardTitle>
+                <CardTitle component="h2" className="shares-group-description">{_("Clients connected to this share right now.")}</CardTitle>
             </CardHeader>
             <ListingTable aria-label={_("Connected clients")} variant="compact"
                           columns={[_("User"), _("Computer"), _("Protocol"), _("Connected since")]}
@@ -296,7 +309,7 @@ export const SmbSharePage = ({ name }: { name: string }) => {
                         <CardBody>
                             <Stack hasGutter>
                                 {!!toggleError && <ErrorAlert error={toggleError} />}
-                                <DescriptionList isHorizontal isCompact horizontalTermWidthModifier={{ default: "18ch" }}>
+                                <DescriptionList isHorizontal isCompact horizontalTermWidthModifier={{ default: "14rem", lg: "20rem" }}>
                                     <DescriptionListGroup>
                                         <DescriptionListTerm>{_("Path")}</DescriptionListTerm>
                                         <DescriptionListDescription id="smb-share-path">
@@ -331,15 +344,16 @@ export const SmbSharePage = ({ name }: { name: string }) => {
                             </Stack>
                         </CardBody>
                     </Card>
-                    {inFile &&
-                        <Gallery hasGutter className="ct-cards-grid shares-cards">
-                            <FieldGroupCard section={canonical} group={SHARE_GENERAL} id="smb-share-general" />
-                            <FieldGroupCard section={canonical} group={SHARE_ACCESS} id="smb-share-access" />
-                            <FieldGroupCard section={canonical} group={SHARE_PERMISSIONS} id="smb-share-permissions" />
-                        </Gallery>}
-                    {inFile && <VfsCard section={canonical} />}
-                    <Connections smb={smb} share={canonical} />
-                    {inFile && <ParameterTable section={canonical} title={_("All parameters of this share")} />}
+                    {inFile
+                        ? <SectionTabs id="smb-share-tabs" tabs={[
+                            { key: "general", title: SHARE_GENERAL.title(), count: customizedCount(smb, canonical, SHARE_GENERAL), content: <FieldGroupCard section={canonical} group={SHARE_GENERAL} id="smb-share-general" /> },
+                            { key: "access", title: SHARE_ACCESS.title(), count: customizedCount(smb, canonical, SHARE_ACCESS), content: <FieldGroupCard section={canonical} group={SHARE_ACCESS} id="smb-share-access" /> },
+                            { key: "permissions", title: SHARE_PERMISSIONS.title(), count: customizedCount(smb, canonical, SHARE_PERMISSIONS), content: <FieldGroupCard section={canonical} group={SHARE_PERMISSIONS} id="smb-share-permissions" /> },
+                            { key: "vfs", title: _("VFS modules"), count: splitList(smb.config.conf.get(canonical, "vfs objects") ?? "").length, content: <VfsCard section={canonical} /> },
+                            ...(smb.admin ? [{ key: "clients", title: _("Connected clients"), content: <Connections smb={smb} share={canonical} /> }] : []),
+                            { key: "parameters", title: _("All parameters"), count: smb.config.conf.section(canonical)?.parameters.size, content: <ParameterTable section={canonical} /> },
+                        ]} />
+                        : <Connections smb={smb} share={canonical} />}
                 </Stack>
             </PageSection>
         </Page>

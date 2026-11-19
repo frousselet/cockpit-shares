@@ -249,7 +249,9 @@ export const VfsCard = ({ section }: { section: string }) => {
                     : null,
             }}
             >
-                <CardTitle component="h2">{_("VFS modules")}</CardTitle>
+                <CardTitle component="h2" className="shares-group-description">
+                    {_("Modules add features such as a recycle bin, macOS support, snapshots or auditing. They run in the order of the list.")}
+                </CardTitle>
             </CardHeader>
             {isInherited &&
                 <CardBody>

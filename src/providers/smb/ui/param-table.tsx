@@ -168,51 +168,53 @@ export const ParameterTable = ({ section, title }: { section: string, title?: st
 
     const exclude = new Set(Array.from(view?.parameters.keys() ?? []));
 
+    const toolbar = (
+        <Toolbar>
+            <ToolbarContent>
+                <ToolbarItem>
+                    <SearchInput placeholder={_("Search parameters")} value={filter} aria-label={_("Search parameters")}
+                                     onChange={(_ev, v) => { setFilter(v); setLimit(PAGE) }} onClear={() => setFilter("")}
+                    />
+                </ToolbarItem>
+                <ToolbarItem>
+                    <FormSelect value={category} aria-label={_("Category")}
+                                    onChange={(_ev, v) => { setCategory(v); setLimit(PAGE) }}
+                    >
+                        <FormSelectOption value="" label={_("All categories")} />
+                        {[...CATEGORIES, "parametric", "unknown"].map(c =>
+                            <FormSelectOption key={c} value={c} label={categoryLabel(c)} />)}
+                    </FormSelect>
+                </ToolbarItem>
+                <ToolbarItem>
+                    <ToggleGroup aria-label={_("Parameters to show")}>
+                        <ToggleGroupItem text={_("Set here")} buttonId="params-set" isSelected={mode === "set"}
+                                             onChange={() => setMode("set")}
+                        />
+                        <ToggleGroupItem text={_("All")} buttonId="params-all" isSelected={mode === "all"}
+                                             onChange={() => { setMode("all"); setLimit(PAGE) }}
+                        />
+                    </ToggleGroup>
+                </ToolbarItem>
+                {smb.admin &&
+                <ToolbarItem align={{ default: "alignEnd" }}>
+                    <Button variant="secondary" id="smb-param-add-button"
+                                    onClick={() => Dialogs.show(<AddParamDialog section={section} exclude={exclude} />)}
+                    >
+                        {_("Add a parameter")}
+                    </Button>
+                </ToolbarItem>}
+            </ToolbarContent>
+        </Toolbar>
+    );
+
     return (
         <Card isPlain className="ct-card" id={"smb-params-" + (global ? "global" : "share")}>
-            <CardHeader actions={{
-                actions: (
-                    <Toolbar>
-                        <ToolbarContent>
-                            <ToolbarItem>
-                                <SearchInput placeholder={_("Search parameters")} value={filter} aria-label={_("Search parameters")}
-                                             onChange={(_ev, v) => { setFilter(v); setLimit(PAGE) }} onClear={() => setFilter("")}
-                                />
-                            </ToolbarItem>
-                            <ToolbarItem>
-                                <FormSelect value={category} aria-label={_("Category")}
-                                            onChange={(_ev, v) => { setCategory(v); setLimit(PAGE) }}
-                                >
-                                    <FormSelectOption value="" label={_("All categories")} />
-                                    {[...CATEGORIES, "parametric", "unknown"].map(c =>
-                                        <FormSelectOption key={c} value={c} label={categoryLabel(c)} />)}
-                                </FormSelect>
-                            </ToolbarItem>
-                            <ToolbarItem>
-                                <ToggleGroup aria-label={_("Parameters to show")}>
-                                    <ToggleGroupItem text={_("Set here")} buttonId="params-set" isSelected={mode === "set"}
-                                                     onChange={() => setMode("set")}
-                                    />
-                                    <ToggleGroupItem text={_("All")} buttonId="params-all" isSelected={mode === "all"}
-                                                     onChange={() => { setMode("all"); setLimit(PAGE) }}
-                                    />
-                                </ToggleGroup>
-                            </ToolbarItem>
-                            {smb.admin &&
-                                <ToolbarItem>
-                                    <Button variant="secondary" id="smb-param-add-button"
-                                            onClick={() => Dialogs.show(<AddParamDialog section={section} exclude={exclude} />)}
-                                    >
-                                        {_("Add a parameter")}
-                                    </Button>
-                                </ToolbarItem>}
-                        </ToolbarContent>
-                    </Toolbar>
-                ),
-            }}
-            >
-                <CardTitle component="h2">{title ?? _("All parameters")}</CardTitle>
-            </CardHeader>
+            {title
+                ? (
+                    <CardHeader actions={{ actions: toolbar }}>
+                        <CardTitle component="h2">{title}</CardTitle>
+                    </CardHeader>)
+                : <CardHeader>{toolbar}</CardHeader>}
             <ListingTable aria-label={title ?? _("All parameters")} variant="compact" gridBreakPoint="grid-md"
                           className="shares-param-table"
                           columns={[

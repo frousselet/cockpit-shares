@@ -262,7 +262,7 @@ export const SmbStatusCard = () => {
                                     <DiagnosticsList diagnostics={diagnostics} />
                                 </ExpandableSection>
                             </Alert>}
-                        <DescriptionList isHorizontal isCompact columnModifier={{ default: "1Col" }}>
+                        <DescriptionList isHorizontal isCompact columnModifier={{ default: "1Col" }} horizontalTermWidthModifier={{ default: "14rem", lg: "20rem" }}>
                             <DescriptionListGroup>
                                 <DescriptionListTerm>{_("Version")}</DescriptionListTerm>
                                 <DescriptionListDescription id="smb-version">{env.versionString || _("Unknown")}</DescriptionListDescription>
@@ -283,7 +283,7 @@ export const SmbStatusCard = () => {
                             </DescriptionListGroup>
                         </DescriptionList>
                         <Divider />
-                        <DescriptionList isHorizontal isCompact columnModifier={{ default: "1Col" }} id="smb-services">
+                        <DescriptionList isHorizontal isCompact columnModifier={{ default: "1Col" }} horizontalTermWidthModifier={{ default: "14rem", lg: "20rem" }} id="smb-services">
                             {env.units.smbd &&
                                 <ServiceRow unit={env.units.smbd} label={_("File server")} admin={smb.admin}
                                             description={_("Serves the shares (smbd).")}

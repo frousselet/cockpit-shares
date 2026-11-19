@@ -9,14 +9,15 @@ import cockpit from "cockpit";
 
 import { Breadcrumb, BreadcrumbItem } from "@patternfly/react-core/dist/esm/components/Breadcrumb/index.js";
 import { Page, PageBreadcrumb, PageSection } from "@patternfly/react-core/dist/esm/components/Page/index.js";
-import { Gallery } from "@patternfly/react-core/dist/esm/layouts/Gallery/index.js";
 import { Stack } from "@patternfly/react-core/dist/esm/layouts/Stack/index.js";
 
 import { EmptyStatePanel } from "cockpit-components-empty-state";
 
 import { useSmb } from "../state.tsx";
 import { GLOBAL_IDENTITY, GLOBAL_SECURITY, GLOBAL_NETWORK, GLOBAL_LOGGING, GLOBAL_SHARING } from "./labels.ts";
-import { FieldGroupCard } from "./share-page.tsx";
+import { FieldGroupCard, customizedCount } from "./share-page.tsx";
+import { SectionTabs } from "./tabs.tsx";
+import { splitList } from "../smbconf.ts";
 import { ParameterTable } from "./param-table.tsx";
 import { VfsCard } from "./vfs-card.tsx";
 import { SmbNotices } from "./status-card.tsx";
@@ -39,15 +40,16 @@ export const SmbGlobalPage = () => {
                     : (
                         <Stack hasGutter>
                             <SmbNotices />
-                            <Gallery hasGutter className="ct-cards-grid shares-cards">
-                                <FieldGroupCard section="global" group={GLOBAL_IDENTITY} id="smb-global-identity" />
-                                <FieldGroupCard section="global" group={GLOBAL_SECURITY} id="smb-global-security" />
-                                <FieldGroupCard section="global" group={GLOBAL_NETWORK} id="smb-global-network" />
-                                <FieldGroupCard section="global" group={GLOBAL_LOGGING} id="smb-global-logging" />
-                                <FieldGroupCard section="global" group={GLOBAL_SHARING} id="smb-global-sharing" />
-                            </Gallery>
-                            <VfsCard section="global" />
-                            <ParameterTable section="global" title={_("All global parameters")} />
+                            <SectionTabs id="smb-global-tabs" tabs={[
+                                ...[GLOBAL_IDENTITY, GLOBAL_SECURITY, GLOBAL_NETWORK, GLOBAL_LOGGING, GLOBAL_SHARING].map(group => ({
+                                    key: group.id,
+                                    title: group.title(),
+                                    count: customizedCount(smb, "global", group),
+                                    content: <FieldGroupCard section="global" group={group} id={"smb-global-" + group.id} />,
+                                })),
+                                { key: "vfs", title: _("VFS modules"), count: splitList(smb.config.conf.get("global", "vfs objects") ?? "").length, content: <VfsCard section="global" /> },
+                                { key: "parameters", title: _("All parameters"), count: smb.config.conf.section("global")?.parameters.size, content: <ParameterTable section="global" /> },
+                            ]} />
                         </Stack>)}
             </PageSection>
         </Page>

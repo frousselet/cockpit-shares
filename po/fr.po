@@ -10,11 +10,15 @@ msgstr ""
 
 
 #: src/index.html:7 src/providers/smb/ui/history-page.tsx:97
-#: src/providers/smb/ui/share-page.tsx:216
-#: src/providers/smb/ui/global-page.tsx:32 src/providers/smb/ui/labels.ts:167
+#: src/providers/smb/ui/share-page.tsx:229
+#: src/providers/smb/ui/global-page.tsx:33 src/providers/smb/ui/labels.ts:175
 #: src/manifest.json:0 org.cockpit_project.shares.metainfo.xml:5
 msgid "File sharing"
 msgstr "Partage de fichiers"
+
+#: src/providers/smb/ui/tabs.tsx:31
+msgid "Sections"
+msgstr "Sections"
 
 #: src/providers/smb/ui/history-page.tsx:35
 msgid "No difference."
@@ -60,10 +64,10 @@ msgid "Saved copy"
 msgstr "Copie enregistrée"
 
 #: src/providers/smb/ui/history-page.tsx:111
-#: src/providers/smb/ui/param-table.tsx:223
+#: src/providers/smb/ui/param-table.tsx:225
 #: src/providers/smb/ui/users-card.tsx:197
 #: src/providers/smb/ui/sessions-card.tsx:80
-#: src/providers/smb/ui/vfs-card.tsx:257 src/app.tsx:146
+#: src/providers/smb/ui/vfs-card.tsx:261 src/app.tsx:146
 msgid "Actions"
 msgstr "Actions"
 
@@ -71,7 +75,7 @@ msgstr "Actions"
 #: src/providers/smb/ui/users-card.tsx:81
 #: src/providers/smb/ui/users-card.tsx:200
 #: src/providers/smb/ui/sessions-card.tsx:82
-#: src/providers/smb/ui/share-page.tsx:189 src/app.tsx:149
+#: src/providers/smb/ui/share-page.tsx:202 src/app.tsx:149
 msgid "Loading..."
 msgstr "Chargement…"
 
@@ -166,13 +170,13 @@ msgid "No matching account"
 msgstr "Aucun compte correspondant"
 
 #: src/providers/smb/ui/param-field.tsx:211
-#: src/providers/smb/ui/share-page.tsx:73
-#: src/providers/smb/ui/share-page.tsx:304
+#: src/providers/smb/ui/share-page.tsx:78
+#: src/providers/smb/ui/share-page.tsx:317
 msgid "not set"
 msgstr "non défini"
 
 #: src/providers/smb/ui/param-field.tsx:213
-#: src/providers/smb/ui/vfs-card.tsx:149
+#: src/providers/smb/ui/vfs-card.tsx:151
 msgid "Default ($0)"
 msgstr "Par défaut ($0)"
 
@@ -236,7 +240,7 @@ msgstr "macOS"
 msgid "Recycle bin"
 msgstr "Corbeille"
 
-#: src/providers/smb/ui/shares.tsx:126 src/providers/smb/ui/share-page.tsx:304
+#: src/providers/smb/ui/shares.tsx:126 src/providers/smb/ui/share-page.tsx:317
 msgid "Each user's home directory"
 msgstr "Dossier personnel de chaque utilisateur"
 
@@ -248,7 +252,7 @@ msgstr "Ce dossier n'existe pas encore."
 msgid "This is not a directory."
 msgstr "Ce chemin n'est pas un dossier."
 
-#: src/providers/smb/ui/shares.tsx:196 src/providers/smb/ui/share-page.tsx:155
+#: src/providers/smb/ui/shares.tsx:196 src/providers/smb/ui/share-page.tsx:168
 msgid "Owner $0, group $1, permissions $2"
 msgstr "Propriétaire $0, groupe $1, permissions $2"
 
@@ -293,7 +297,7 @@ msgstr "Créer le dossier"
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: src/providers/smb/ui/shares.tsx:281 src/providers/smb/ui/labels.ts:86
+#: src/providers/smb/ui/shares.tsx:281 src/providers/smb/ui/labels.ts:89
 msgid "Permissions"
 msgstr "Permissions"
 
@@ -309,8 +313,8 @@ msgstr "Nom du partage"
 msgid "Clients connect to $0"
 msgstr "Adresse pour les clients : $0"
 
-#: src/providers/smb/ui/shares.tsx:298 src/providers/smb/ui/share-page.tsx:311
-#: src/providers/smb/ui/labels.ts:58 src/app.tsx:143
+#: src/providers/smb/ui/shares.tsx:298 src/providers/smb/ui/share-page.tsx:324
+#: src/providers/smb/ui/labels.ts:60 src/app.tsx:143
 msgid "Description"
 msgstr "Description"
 
@@ -360,16 +364,16 @@ msgstr "Sans lui sur $0, testparm signale un avertissement. Ajouter catia fruit 
 
 #: src/providers/smb/ui/shares.tsx:322
 #: src/providers/smb/ui/sessions-card.tsx:63
-#: src/providers/smb/ui/sessions-card.tsx:89 src/providers/smb/ui/labels.ts:68
+#: src/providers/smb/ui/sessions-card.tsx:89 src/providers/smb/ui/labels.ts:70
 msgid "Access"
 msgstr "Accès"
 
-#: src/providers/smb/ui/shares.tsx:324 src/providers/smb/ui/labels.ts:61
+#: src/providers/smb/ui/shares.tsx:324 src/providers/smb/ui/labels.ts:63
 #: src/app.tsx:86
 msgid "Read only"
 msgstr "Lecture seule"
 
-#: src/providers/smb/ui/shares.tsx:328 src/providers/smb/ui/labels.ts:72
+#: src/providers/smb/ui/shares.tsx:328 src/providers/smb/ui/labels.ts:75
 msgid "Allowed users and groups"
 msgstr "Utilisateurs et groupes autorisés"
 
@@ -442,7 +446,7 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #: src/providers/smb/ui/shares.tsx:433 src/providers/smb/ui/param-table.tsx:125
-#: src/providers/smb/ui/share-page.tsx:53
+#: src/providers/smb/ui/share-page.tsx:58
 msgid "Edit"
 msgstr "Modifier"
 
@@ -506,80 +510,81 @@ msgid "Use the global value"
 msgstr "Utiliser la valeur globale"
 
 #: src/providers/smb/ui/param-table.tsx:151
-#: src/providers/smb/ui/share-page.tsx:71
+#: src/providers/smb/ui/share-page.tsx:74
 msgid "empty"
 msgstr "vide"
 
-#: src/providers/smb/ui/param-table.tsx:178
+#: src/providers/smb/ui/param-table.tsx:175
 msgid "Search parameters"
 msgstr "Rechercher un paramètre"
 
-#: src/providers/smb/ui/param-table.tsx:183
-#: src/providers/smb/ui/param-table.tsx:222
+#: src/providers/smb/ui/param-table.tsx:180
+#: src/providers/smb/ui/param-table.tsx:224
 msgid "Category"
 msgstr "Catégorie"
 
-#: src/providers/smb/ui/param-table.tsx:186
+#: src/providers/smb/ui/param-table.tsx:183
 msgid "All categories"
 msgstr "Toutes les catégories"
 
-#: src/providers/smb/ui/param-table.tsx:192
+#: src/providers/smb/ui/param-table.tsx:189
 msgid "Parameters to show"
 msgstr "Paramètres affichés"
 
-#: src/providers/smb/ui/param-table.tsx:193
+#: src/providers/smb/ui/param-table.tsx:190
 msgid "Set here"
 msgstr "Définis ici"
 
-#: src/providers/smb/ui/param-table.tsx:196
+#: src/providers/smb/ui/param-table.tsx:193
 msgid "All"
 msgstr "Tous"
 
-#: src/providers/smb/ui/param-table.tsx:206
-#: src/providers/smb/ui/dialogs.tsx:272
+#: src/providers/smb/ui/param-table.tsx:203
+#: src/providers/smb/ui/dialogs.tsx:274
 msgid "Add a parameter"
 msgstr "Ajouter un paramètre"
 
-#: src/providers/smb/ui/param-table.tsx:214
-#: src/providers/smb/ui/param-table.tsx:216
+#: src/providers/smb/ui/param-table.tsx:218
+#: src/providers/smb/ui/share-page.tsx:354
+#: src/providers/smb/ui/global-page.tsx:51
 msgid "All parameters"
 msgstr "Tous les paramètres"
 
-#: src/providers/smb/ui/param-table.tsx:219
-#: src/providers/smb/ui/dialogs.tsx:275
+#: src/providers/smb/ui/param-table.tsx:221
+#: src/providers/smb/ui/dialogs.tsx:277
 msgid "Parameter"
 msgstr "Paramètre"
 
-#: src/providers/smb/ui/param-table.tsx:220
-#: src/providers/smb/ui/dialogs.tsx:208 src/providers/smb/ui/dialogs.tsx:287
+#: src/providers/smb/ui/param-table.tsx:222
+#: src/providers/smb/ui/dialogs.tsx:208 src/providers/smb/ui/dialogs.tsx:289
 msgid "Value"
 msgstr "Valeur"
 
-#: src/providers/smb/ui/param-table.tsx:221
+#: src/providers/smb/ui/param-table.tsx:223
 msgid "Default"
 msgstr "Par défaut"
 
-#: src/providers/smb/ui/param-table.tsx:221
+#: src/providers/smb/ui/param-table.tsx:223
 msgid "Inherited"
 msgstr "Hérité"
 
-#: src/providers/smb/ui/param-table.tsx:228
+#: src/providers/smb/ui/param-table.tsx:230
 msgid "No matching parameters"
 msgstr "Aucun paramètre correspondant"
 
-#: src/providers/smb/ui/param-table.tsx:229
+#: src/providers/smb/ui/param-table.tsx:231
 msgid "Clear filters"
 msgstr "Effacer les filtres"
 
-#: src/providers/smb/ui/param-table.tsx:232
+#: src/providers/smb/ui/param-table.tsx:234
 msgid "No parameter is set here"
 msgstr "Aucun paramètre n'est défini ici"
 
-#: src/providers/smb/ui/param-table.tsx:233
+#: src/providers/smb/ui/param-table.tsx:235
 msgid "Select \"All\" to see every parameter with the value that applies."
 msgstr "Choisissez « Tous » pour voir chaque paramètre avec la valeur appliquée."
 
-#: src/providers/smb/ui/param-table.tsx:239
+#: src/providers/smb/ui/param-table.tsx:241
 msgid "Show all $0 parameters"
 msgstr "Afficher les $0 paramètres"
 
@@ -603,7 +608,7 @@ msgstr "Samba conserve son propre mot de passe, distinct du mot de passe du syst
 msgid "Add Samba user"
 msgstr "Ajouter un utilisateur Samba"
 
-#: src/providers/smb/ui/users-card.tsx:72 src/providers/smb/ui/dialogs.tsx:272
+#: src/providers/smb/ui/users-card.tsx:72 src/providers/smb/ui/dialogs.tsx:274
 #: src/providers/smb/ui/vfs-card.tsx:86
 msgid "Add"
 msgstr "Ajouter"
@@ -653,17 +658,17 @@ msgstr "Le compte ne pourra plus se connecter aux partages. Le compte système e
 
 #: src/providers/smb/ui/users-card.tsx:151
 #: src/providers/smb/ui/users-card.tsx:155
-#: src/providers/smb/ui/vfs-card.tsx:205 src/providers/smb/ui/vfs-card.tsx:214
+#: src/providers/smb/ui/vfs-card.tsx:207 src/providers/smb/ui/vfs-card.tsx:216
 msgid "Remove"
 msgstr "Retirer"
 
 #: src/providers/smb/ui/users-card.tsx:166
-#: src/providers/smb/ui/share-page.tsx:292 src/app.tsx:84
+#: src/providers/smb/ui/share-page.tsx:305 src/app.tsx:84
 msgid "Disabled"
 msgstr "Désactivé"
 
 #: src/providers/smb/ui/users-card.tsx:166
-#: src/providers/smb/ui/share-page.tsx:280 src/providers/smb/ui/labels.ts:59
+#: src/providers/smb/ui/share-page.tsx:293 src/providers/smb/ui/labels.ts:61
 msgid "Enabled"
 msgstr "Activé"
 
@@ -717,7 +722,7 @@ msgstr "Le client perd ses fichiers ouverts et peut se reconnecter automatiqueme
 
 #: src/providers/smb/ui/sessions-card.tsx:51
 #: src/providers/smb/ui/sessions-card.tsx:55
-#: src/providers/smb/ui/share-page.tsx:177
+#: src/providers/smb/ui/share-page.tsx:190
 msgid "Disconnect"
 msgstr "Déconnecter"
 
@@ -739,24 +744,24 @@ msgstr "Ouvert le"
 
 #: src/providers/smb/ui/sessions-card.tsx:76
 #: src/providers/smb/ui/sessions-card.tsx:79
-#: src/providers/smb/ui/share-page.tsx:185
-#: src/providers/smb/ui/share-page.tsx:187
+#: src/providers/smb/ui/share-page.tsx:200
+#: src/providers/smb/ui/share-page.tsx:353
 msgid "Connected clients"
 msgstr "Clients connectés"
 
 #: src/providers/smb/ui/sessions-card.tsx:80
 #: src/providers/smb/ui/sessions-card.tsx:89
-#: src/providers/smb/ui/share-page.tsx:188
+#: src/providers/smb/ui/share-page.tsx:201
 msgid "User"
 msgstr "Utilisateur"
 
 #: src/providers/smb/ui/sessions-card.tsx:80
-#: src/providers/smb/ui/share-page.tsx:188
+#: src/providers/smb/ui/share-page.tsx:201
 msgid "Computer"
 msgstr "Ordinateur"
 
 #: src/providers/smb/ui/sessions-card.tsx:80
-#: src/providers/smb/ui/share-page.tsx:188 src/providers/smb/ui/labels.ts:25
+#: src/providers/smb/ui/share-page.tsx:201 src/providers/smb/ui/labels.ts:25
 #: src/app.tsx:141
 msgid "Protocol"
 msgstr "Protocole"
@@ -775,140 +780,150 @@ msgid_plural "$0 open files"
 msgstr[0] "$0 fichier ouvert"
 msgstr[1] "$0 fichiers ouverts"
 
-#: src/providers/smb/ui/share-page.tsx:73
+#: src/providers/smb/ui/share-page.tsx:78
 msgid "Everyone"
 msgstr "Tout le monde"
 
-#: src/providers/smb/ui/share-page.tsx:73
+#: src/providers/smb/ui/share-page.tsx:78
 msgid "Nobody"
 msgstr "Personne"
 
-#: src/providers/smb/ui/share-page.tsx:74
-msgid "(inherited)"
-msgstr "(hérité)"
+#: src/providers/smb/ui/share-page.tsx:82
+msgid "Samba default"
+msgstr "défaut Samba"
 
-#: src/providers/smb/ui/share-page.tsx:114
+#: src/providers/smb/ui/share-page.tsx:82
+msgid "inherited"
+msgstr "hérité"
+
+#: src/providers/smb/ui/share-page.tsx:127
 msgid "SELinux prevents Samba from sharing home directories"
 msgstr "SELinux empêche Samba de partager les dossiers personnels"
 
-#: src/providers/smb/ui/share-page.tsx:115
+#: src/providers/smb/ui/share-page.tsx:128
 msgid "Allow"
 msgstr "Autoriser"
 
-#: src/providers/smb/ui/share-page.tsx:117
+#: src/providers/smb/ui/share-page.tsx:130
 msgid "The samba_enable_home_dirs boolean is off."
 msgstr "Le booléen samba_enable_home_dirs est désactivé."
 
-#: src/providers/smb/ui/share-page.tsx:122
+#: src/providers/smb/ui/share-page.tsx:135
 msgid "The directory does not exist"
 msgstr "Le dossier n'existe pas"
 
-#: src/providers/smb/ui/share-page.tsx:123
+#: src/providers/smb/ui/share-page.tsx:136
 msgid "Create it"
 msgstr "Le créer"
 
-#: src/providers/smb/ui/share-page.tsx:125
+#: src/providers/smb/ui/share-page.tsx:138
 msgid "Clients cannot connect to this share until the directory exists."
 msgstr "Les clients ne peuvent pas se connecter tant que le dossier n'existe pas."
 
-#: src/providers/smb/ui/share-page.tsx:128
+#: src/providers/smb/ui/share-page.tsx:141
 msgid "The path is not a directory"
 msgstr "Le chemin n'est pas un dossier"
 
-#: src/providers/smb/ui/share-page.tsx:137
+#: src/providers/smb/ui/share-page.tsx:150
 msgid "SELinux prevents Samba from accessing this directory (type $0)"
 msgstr "SELinux empêche Samba d'accéder à ce dossier (type $0)"
 
-#: src/providers/smb/ui/share-page.tsx:140
+#: src/providers/smb/ui/share-page.tsx:153
 msgid "Label the directory for Samba"
 msgstr "Étiqueter le dossier pour Samba"
 
-#: src/providers/smb/ui/share-page.tsx:144
+#: src/providers/smb/ui/share-page.tsx:157
 msgid "The directory tree gets the samba_share_t type, persistently (semanage fcontext and restorecon)."
 msgstr "L'arborescence reçoit le type samba_share_t de façon permanente (semanage fcontext et restorecon)."
 
-#: src/providers/smb/ui/share-page.tsx:145
+#: src/providers/smb/ui/share-page.tsx:158
 msgid "The directory tree gets the samba_share_t type with chcon. Install semanage to make it survive a relabel."
 msgstr "L'arborescence reçoit le type samba_share_t avec chcon. Installez semanage pour que l'étiquette résiste à un réétiquetage."
 
-#: src/providers/smb/ui/share-page.tsx:175
+#: src/providers/smb/ui/share-page.tsx:188
 msgid "Disconnect every client?"
 msgstr "Déconnecter tous les clients ?"
 
-#: src/providers/smb/ui/share-page.tsx:176
+#: src/providers/smb/ui/share-page.tsx:189
 msgid "Open files may lose unsaved changes. Clients usually reconnect automatically."
 msgstr "Les fichiers ouverts peuvent perdre les modifications non enregistrées. Les clients se reconnectent en général automatiquement."
 
-#: src/providers/smb/ui/share-page.tsx:181
+#: src/providers/smb/ui/share-page.tsx:194
 msgid "Disconnect all"
 msgstr "Tout déconnecter"
 
-#: src/providers/smb/ui/share-page.tsx:188
+#: src/providers/smb/ui/share-page.tsx:198
+msgid "Clients connected to this share right now."
+msgstr "Clients connectés à ce partage en ce moment."
+
+#: src/providers/smb/ui/share-page.tsx:201
 msgid "Connected since"
 msgstr "Connecté depuis"
 
-#: src/providers/smb/ui/share-page.tsx:190
+#: src/providers/smb/ui/share-page.tsx:203
 msgid "No client is connected to this share"
 msgstr "Aucun client n'est connecté à ce partage"
 
-#: src/providers/smb/ui/share-page.tsx:233
+#: src/providers/smb/ui/share-page.tsx:246
 msgid "Share $0 does not exist"
 msgstr "Le partage $0 n'existe pas"
 
-#: src/providers/smb/ui/share-page.tsx:234 src/app.tsx:180
+#: src/providers/smb/ui/share-page.tsx:247 src/app.tsx:180
 msgid "Back to file sharing"
 msgstr "Retour au partage de fichiers"
 
-#: src/providers/smb/ui/share-page.tsx:264
+#: src/providers/smb/ui/share-page.tsx:277
 msgid "This share is defined outside smb.conf"
 msgstr "Ce partage est défini hors de smb.conf"
 
-#: src/providers/smb/ui/share-page.tsx:265
+#: src/providers/smb/ui/share-page.tsx:278
 msgid "It comes from an included file or from the registry configuration and is shown read only."
 msgstr "Il provient d'un fichier inclus ou de la configuration en registre et s'affiche en lecture seule."
 
-#: src/providers/smb/ui/share-page.tsx:268
+#: src/providers/smb/ui/share-page.tsx:281
 msgid "Special section: home directories"
 msgstr "Section spéciale : dossiers personnels"
 
-#: src/providers/smb/ui/share-page.tsx:269
+#: src/providers/smb/ui/share-page.tsx:282
 msgid "Every user connecting to \\\\server\\username gets their home directory; the settings below apply to all of them."
 msgstr "Chaque utilisateur qui se connecte à \\\\serveur\\nom_utilisateur obtient son dossier personnel ; les réglages ci-dessous s'appliquent à tous."
 
-#: src/providers/smb/ui/share-page.tsx:272
+#: src/providers/smb/ui/share-page.tsx:285
 msgid "Special section: printers"
 msgstr "Section spéciale : imprimantes"
 
-#: src/providers/smb/ui/share-page.tsx:273
+#: src/providers/smb/ui/share-page.tsx:286
 msgid "Every printer of the print system is shared with these settings."
 msgstr "Chaque imprimante du système d'impression est partagée avec ces réglages."
 
-#: src/providers/smb/ui/share-page.tsx:301 src/providers/smb/ui/labels.ts:57
+#: src/providers/smb/ui/share-page.tsx:314 src/providers/smb/ui/labels.ts:59
 #: src/app.tsx:142
 msgid "Path"
 msgstr "Chemin"
 
-#: src/providers/smb/ui/share-page.tsx:315
+#: src/providers/smb/ui/share-page.tsx:328
 msgid "Windows address"
 msgstr "Adresse Windows"
 
-#: src/providers/smb/ui/share-page.tsx:317
-#: src/providers/smb/ui/share-page.tsx:325
+#: src/providers/smb/ui/share-page.tsx:330
+#: src/providers/smb/ui/share-page.tsx:338
 msgid "Copy"
 msgstr "Copier"
 
-#: src/providers/smb/ui/share-page.tsx:317
-#: src/providers/smb/ui/share-page.tsx:325
+#: src/providers/smb/ui/share-page.tsx:330
+#: src/providers/smb/ui/share-page.tsx:338
 msgid "Copied"
 msgstr "Copié"
 
-#: src/providers/smb/ui/share-page.tsx:323
+#: src/providers/smb/ui/share-page.tsx:336
 msgid "macOS and Linux address"
 msgstr "Adresse macOS et Linux"
 
-#: src/providers/smb/ui/share-page.tsx:342
-msgid "All parameters of this share"
-msgstr "Tous les paramètres de ce partage"
+#: src/providers/smb/ui/share-page.tsx:352
+#: src/providers/smb/ui/global-page.tsx:50 src/providers/smb/ui/labels.ts:29
+#: src/providers/smb/ui/vfs-card.tsx:260
+msgid "VFS modules"
+msgstr "Modules VFS"
 
 #: src/providers/smb/ui/status-card.tsx:60
 #: src/providers/smb/ui/status-card.tsx:204
@@ -1042,7 +1057,7 @@ msgstr "Masquer les détails"
 msgid "Version"
 msgstr "Version"
 
-#: src/providers/smb/ui/status-card.tsx:271 src/providers/smb/ui/labels.ts:114
+#: src/providers/smb/ui/status-card.tsx:271 src/providers/smb/ui/labels.ts:119
 msgid "Server name"
 msgstr "Nom du serveur"
 
@@ -1143,37 +1158,33 @@ msgstr "Samba ne connaît pas ce paramètre. Les options de module s'écrivent m
 msgid "This parameter is already set, edit it in the list."
 msgstr "Ce paramètre est déjà défini, modifiez-le dans la liste."
 
-#: src/providers/smb/ui/dialogs.tsx:261
+#: src/providers/smb/ui/dialogs.tsx:262
 msgid "This parameter is only valid in the global settings."
 msgstr "Ce paramètre n'est valable que dans les paramètres globaux."
 
-#: src/providers/smb/ui/dialogs.tsx:277
+#: src/providers/smb/ui/dialogs.tsx:279
 msgid "Use \"$0\""
 msgstr "Utiliser « $0 »"
 
-#: src/providers/smb/ui/dialogs.tsx:278
+#: src/providers/smb/ui/dialogs.tsx:280
 msgid "Search a parameter or type module:option"
 msgstr "Rechercher un paramètre ou saisir module:option"
 
-#: src/providers/smb/ui/dialogs.tsx:279
+#: src/providers/smb/ui/dialogs.tsx:281
 msgid "No matching parameter"
 msgstr "Aucun paramètre correspondant"
 
-#: src/providers/smb/ui/dialogs.tsx:290
+#: src/providers/smb/ui/dialogs.tsx:292
 msgid "Choose a value"
 msgstr "Choisissez une valeur"
 
-#: src/providers/smb/ui/dialogs.tsx:293 src/providers/smb/ui/vfs-card.tsx:153
+#: src/providers/smb/ui/dialogs.tsx:295 src/providers/smb/ui/vfs-card.tsx:155
 msgid "Expected: $0"
 msgstr "Format attendu : $0"
 
-#: src/providers/smb/ui/global-page.tsx:33
+#: src/providers/smb/ui/global-page.tsx:34
 msgid "SMB global settings"
 msgstr "Paramètres globaux SMB"
-
-#: src/providers/smb/ui/global-page.tsx:50
-msgid "All global parameters"
-msgstr "Tous les paramètres globaux"
 
 #: src/providers/smb/ui/labels.ts:15
 msgid "Base"
@@ -1199,7 +1210,7 @@ msgstr "LDAP"
 msgid "Locking"
 msgstr "Verrouillage"
 
-#: src/providers/smb/ui/labels.ts:21 src/providers/smb/ui/labels.ts:156
+#: src/providers/smb/ui/labels.ts:21 src/providers/smb/ui/labels.ts:163
 msgid "Logging"
 msgstr "Journalisation"
 
@@ -1219,18 +1230,13 @@ msgstr "Impression"
 msgid "RPC services"
 msgstr "Services RPC"
 
-#: src/providers/smb/ui/labels.ts:27 src/providers/smb/ui/labels.ts:123
+#: src/providers/smb/ui/labels.ts:27 src/providers/smb/ui/labels.ts:128
 msgid "Security"
 msgstr "Sécurité"
 
 #: src/providers/smb/ui/labels.ts:28
 msgid "Tuning"
 msgstr "Performances"
-
-#: src/providers/smb/ui/labels.ts:29 src/providers/smb/ui/vfs-card.tsx:250
-#: src/providers/smb/ui/vfs-card.tsx:256
-msgid "VFS modules"
-msgstr "Modules VFS"
 
 #: src/providers/smb/ui/labels.ts:30
 msgid "Winbind"
@@ -1244,295 +1250,327 @@ msgstr "WINS"
 msgid "Module options"
 msgstr "Options de module"
 
-#: src/providers/smb/ui/labels.ts:55
+#: src/providers/smb/ui/labels.ts:56
 msgid "General"
 msgstr "Général"
 
 #: src/providers/smb/ui/labels.ts:57
+msgid "Directory, description and visibility of the share."
+msgstr "Dossier, description et visibilité du partage."
+
+#: src/providers/smb/ui/labels.ts:59
 msgid "Directory made available by this share."
 msgstr "Dossier mis à disposition par ce partage."
 
-#: src/providers/smb/ui/labels.ts:58
+#: src/providers/smb/ui/labels.ts:60
 msgid "Shown next to the share name by clients."
 msgstr "Affichée à côté du nom du partage chez les clients."
 
-#: src/providers/smb/ui/labels.ts:60
+#: src/providers/smb/ui/labels.ts:62
 msgid "Visible in the share list"
 msgstr "Visible dans la liste des partages"
 
-#: src/providers/smb/ui/labels.ts:62
+#: src/providers/smb/ui/labels.ts:64
 msgid "Maximum connections"
 msgstr "Connexions maximales"
 
-#: src/providers/smb/ui/labels.ts:62
+#: src/providers/smb/ui/labels.ts:64
 msgid "0 means unlimited."
 msgstr "0 signifie illimité."
 
-#: src/providers/smb/ui/labels.ts:70
+#: src/providers/smb/ui/labels.ts:71
+msgid "Users, groups and hosts allowed to connect."
+msgstr "Utilisateurs, groupes et hôtes autorisés à se connecter."
+
+#: src/providers/smb/ui/labels.ts:73
 msgid "Allow guest access"
 msgstr "Autoriser l'accès invité"
 
-#: src/providers/smb/ui/labels.ts:70
+#: src/providers/smb/ui/labels.ts:73
 msgid "Clients can connect without a password, as the guest account."
 msgstr "Les clients peuvent se connecter sans mot de passe, avec le compte invité."
 
-#: src/providers/smb/ui/labels.ts:71
+#: src/providers/smb/ui/labels.ts:74
 msgid "Guest access only"
 msgstr "Accès invité uniquement"
 
-#: src/providers/smb/ui/labels.ts:72
+#: src/providers/smb/ui/labels.ts:75
 msgid "Empty: every authenticated user."
 msgstr "Vide : tout utilisateur authentifié."
 
-#: src/providers/smb/ui/labels.ts:73
+#: src/providers/smb/ui/labels.ts:76
 msgid "Denied users and groups"
 msgstr "Utilisateurs et groupes refusés"
 
-#: src/providers/smb/ui/labels.ts:74
+#: src/providers/smb/ui/labels.ts:77
 msgid "Read only for"
 msgstr "Lecture seule pour"
 
-#: src/providers/smb/ui/labels.ts:75
+#: src/providers/smb/ui/labels.ts:78
 msgid "Writable for"
 msgstr "Écriture pour"
 
-#: src/providers/smb/ui/labels.ts:76
+#: src/providers/smb/ui/labels.ts:79
 msgid "Administrators"
 msgstr "Administrateurs"
 
-#: src/providers/smb/ui/labels.ts:76
+#: src/providers/smb/ui/labels.ts:79
 msgid "These users act as root on this share."
 msgstr "Ces utilisateurs agissent en tant que root sur ce partage."
 
-#: src/providers/smb/ui/labels.ts:77 src/providers/smb/ui/labels.ts:145
+#: src/providers/smb/ui/labels.ts:80 src/providers/smb/ui/labels.ts:152
 msgid "Allowed hosts"
 msgstr "Hôtes autorisés"
 
-#: src/providers/smb/ui/labels.ts:77
+#: src/providers/smb/ui/labels.ts:80
 msgid "Addresses, networks or host names, for example 192.168.1. or 10.0.0.0/8."
 msgstr "Adresses, réseaux ou noms d'hôtes, par exemple 192.168.1. ou 10.0.0.0/8."
 
-#: src/providers/smb/ui/labels.ts:78 src/providers/smb/ui/labels.ts:146
+#: src/providers/smb/ui/labels.ts:81 src/providers/smb/ui/labels.ts:153
 msgid "Denied hosts"
 msgstr "Hôtes refusés"
 
-#: src/providers/smb/ui/labels.ts:79
+#: src/providers/smb/ui/labels.ts:82
 msgid "Hide the share from users without access"
 msgstr "Masquer le partage aux utilisateurs sans accès"
 
-#: src/providers/smb/ui/labels.ts:80
+#: src/providers/smb/ui/labels.ts:83
 msgid "Hide unreadable files"
 msgstr "Masquer les fichiers illisibles"
 
-#: src/providers/smb/ui/labels.ts:88
+#: src/providers/smb/ui/labels.ts:90
+msgid "Owner and permissions of the files and directories created through the share."
+msgstr "Propriétaire et permissions des fichiers et dossiers créés par le partage."
+
+#: src/providers/smb/ui/labels.ts:92
 msgid "Access files as user"
 msgstr "Accéder aux fichiers en tant qu'utilisateur"
 
-#: src/providers/smb/ui/labels.ts:89
+#: src/providers/smb/ui/labels.ts:93
 msgid "Access files as group"
 msgstr "Accéder aux fichiers en tant que groupe"
 
-#: src/providers/smb/ui/labels.ts:90
+#: src/providers/smb/ui/labels.ts:94
 msgid "Permissions of new files"
 msgstr "Permissions des nouveaux fichiers"
 
-#: src/providers/smb/ui/labels.ts:91
+#: src/providers/smb/ui/labels.ts:95
 msgid "Permissions always set on new files"
 msgstr "Permissions imposées aux nouveaux fichiers"
 
-#: src/providers/smb/ui/labels.ts:92
+#: src/providers/smb/ui/labels.ts:96
 msgid "Permissions of new directories"
 msgstr "Permissions des nouveaux dossiers"
 
-#: src/providers/smb/ui/labels.ts:93
+#: src/providers/smb/ui/labels.ts:97
 msgid "Permissions always set on new directories"
 msgstr "Permissions imposées aux nouveaux dossiers"
 
-#: src/providers/smb/ui/labels.ts:94
+#: src/providers/smb/ui/labels.ts:98
 msgid "Inherit permissions from the parent directory"
 msgstr "Hériter les permissions du dossier parent"
 
-#: src/providers/smb/ui/labels.ts:95
+#: src/providers/smb/ui/labels.ts:99
 msgid "Inherit ACLs from the parent directory"
 msgstr "Hériter les ACL du dossier parent"
 
-#: src/providers/smb/ui/labels.ts:96
+#: src/providers/smb/ui/labels.ts:100
 msgid "Inherit owner"
 msgstr "Hériter le propriétaire"
 
-#: src/providers/smb/ui/labels.ts:97
+#: src/providers/smb/ui/labels.ts:101
 msgid "Map Windows ACLs"
 msgstr "Traduire les ACL Windows"
 
-#: src/providers/smb/ui/labels.ts:98
+#: src/providers/smb/ui/labels.ts:102
 msgid "Map the archive attribute"
 msgstr "Traduire l'attribut archive"
 
-#: src/providers/smb/ui/labels.ts:99
+#: src/providers/smb/ui/labels.ts:103
 msgid "Store DOS attributes in extended attributes"
 msgstr "Stocker les attributs DOS dans les attributs étendus"
 
-#: src/providers/smb/ui/labels.ts:100
+#: src/providers/smb/ui/labels.ts:104
 msgid "Hide files starting with a dot"
 msgstr "Masquer les fichiers commençant par un point"
 
-#: src/providers/smb/ui/labels.ts:101
+#: src/providers/smb/ui/labels.ts:105
 msgid "Hidden and inaccessible files"
 msgstr "Fichiers masqués et inaccessibles"
 
-#: src/providers/smb/ui/labels.ts:101
+#: src/providers/smb/ui/labels.ts:105
 msgid "Patterns separated by /, for example /*.tmp/.DS_Store/."
 msgstr "Motifs séparés par /, par exemple /*.tmp/.DS_Store/."
 
-#: src/providers/smb/ui/labels.ts:102
+#: src/providers/smb/ui/labels.ts:106
 msgid "Follow symbolic links"
 msgstr "Suivre les liens symboliques"
 
-#: src/providers/smb/ui/labels.ts:103
+#: src/providers/smb/ui/labels.ts:107
 msgid "Follow links outside the share"
 msgstr "Suivre les liens hors du partage"
 
-#: src/providers/smb/ui/labels.ts:111
+#: src/providers/smb/ui/labels.ts:115
 msgid "Server identity"
 msgstr "Identité du serveur"
 
-#: src/providers/smb/ui/labels.ts:113
+#: src/providers/smb/ui/labels.ts:116
+msgid "Names under which the server appears on the network."
+msgstr "Noms sous lesquels le serveur apparaît sur le réseau."
+
+#: src/providers/smb/ui/labels.ts:118
 msgid "Workgroup or domain"
 msgstr "Groupe de travail ou domaine"
 
-#: src/providers/smb/ui/labels.ts:114
+#: src/providers/smb/ui/labels.ts:119
 msgid "NetBIOS name, 15 characters at most."
 msgstr "Nom NetBIOS, 15 caractères au plus."
 
-#: src/providers/smb/ui/labels.ts:115
+#: src/providers/smb/ui/labels.ts:120
 msgid "Server description"
 msgstr "Description du serveur"
 
-#: src/providers/smb/ui/labels.ts:116
+#: src/providers/smb/ui/labels.ts:121
 msgid "Server role"
 msgstr "Rôle du serveur"
 
-#: src/providers/smb/ui/labels.ts:117
+#: src/providers/smb/ui/labels.ts:122
 msgid "Kerberos realm"
 msgstr "Royaume Kerberos"
 
-#: src/providers/smb/ui/labels.ts:125
+#: src/providers/smb/ui/labels.ts:129
+msgid "Authentication, protocol versions, encryption and signing."
+msgstr "Authentification, versions du protocole, chiffrement et signature."
+
+#: src/providers/smb/ui/labels.ts:131
 msgid "Authentication"
 msgstr "Authentification"
 
-#: src/providers/smb/ui/labels.ts:126
+#: src/providers/smb/ui/labels.ts:132
 msgid "Map unknown users to guest"
 msgstr "Associer les utilisateurs inconnus à l'invité"
 
-#: src/providers/smb/ui/labels.ts:127
+#: src/providers/smb/ui/labels.ts:133
 msgid "Guest account"
 msgstr "Compte invité"
 
-#: src/providers/smb/ui/labels.ts:128
+#: src/providers/smb/ui/labels.ts:134
 msgid "Minimum protocol"
 msgstr "Protocole minimal"
 
-#: src/providers/smb/ui/labels.ts:129
+#: src/providers/smb/ui/labels.ts:135
 msgid "Maximum protocol"
 msgstr "Protocole maximal"
 
-#: src/providers/smb/ui/labels.ts:130
+#: src/providers/smb/ui/labels.ts:136
 msgid "Encryption"
 msgstr "Chiffrement"
 
-#: src/providers/smb/ui/labels.ts:131
+#: src/providers/smb/ui/labels.ts:137
 msgid "Signing"
 msgstr "Signature"
 
-#: src/providers/smb/ui/labels.ts:132
+#: src/providers/smb/ui/labels.ts:138
 msgid "NTLM authentication"
 msgstr "Authentification NTLM"
 
-#: src/providers/smb/ui/labels.ts:133
+#: src/providers/smb/ui/labels.ts:139
 msgid "Restrict anonymous access"
 msgstr "Restreindre l'accès anonyme"
 
-#: src/providers/smb/ui/labels.ts:134
+#: src/providers/smb/ui/labels.ts:140
 msgid "Account database"
 msgstr "Base de comptes"
 
-#: src/providers/smb/ui/labels.ts:135
+#: src/providers/smb/ui/labels.ts:141
 msgid "Username map file"
 msgstr "Fichier de correspondance des noms d'utilisateur"
 
-#: src/providers/smb/ui/labels.ts:141
+#: src/providers/smb/ui/labels.ts:147
 msgid "Network"
 msgstr "Réseau"
 
-#: src/providers/smb/ui/labels.ts:143
+#: src/providers/smb/ui/labels.ts:148
+msgid "Interfaces, ports and name announcement."
+msgstr "Interfaces, ports et annonce du nom."
+
+#: src/providers/smb/ui/labels.ts:150
 msgid "Interfaces"
 msgstr "Interfaces"
 
-#: src/providers/smb/ui/labels.ts:143
+#: src/providers/smb/ui/labels.ts:150
 msgid "Interface names or addresses, for example eth0 192.168.1.10/24."
 msgstr "Noms ou adresses d'interfaces, par exemple eth0 192.168.1.10/24."
 
-#: src/providers/smb/ui/labels.ts:144
+#: src/providers/smb/ui/labels.ts:151
 msgid "Listen on these interfaces only"
 msgstr "Écouter uniquement sur ces interfaces"
 
-#: src/providers/smb/ui/labels.ts:147
+#: src/providers/smb/ui/labels.ts:154
 msgid "TCP ports"
 msgstr "Ports TCP"
 
-#: src/providers/smb/ui/labels.ts:148
+#: src/providers/smb/ui/labels.ts:155
 msgid "Disable NetBIOS"
 msgstr "Désactiver NetBIOS"
 
-#: src/providers/smb/ui/labels.ts:149
+#: src/providers/smb/ui/labels.ts:156
 msgid "Announce with multicast DNS (Bonjour)"
 msgstr "Annoncer par DNS multicast (Bonjour)"
 
-#: src/providers/smb/ui/labels.ts:150
+#: src/providers/smb/ui/labels.ts:157
 msgid "Multichannel"
 msgstr "Multicanal"
 
-#: src/providers/smb/ui/labels.ts:158
+#: src/providers/smb/ui/labels.ts:164
+msgid "Log level and destinations."
+msgstr "Niveau et destinations des journaux."
+
+#: src/providers/smb/ui/labels.ts:166
 msgid "Log level"
 msgstr "Niveau de journalisation"
 
-#: src/providers/smb/ui/labels.ts:159
+#: src/providers/smb/ui/labels.ts:167
 msgid "Log destinations"
 msgstr "Destinations des journaux"
 
-#: src/providers/smb/ui/labels.ts:160
+#: src/providers/smb/ui/labels.ts:168
 msgid "Log file"
 msgstr "Fichier journal"
 
-#: src/providers/smb/ui/labels.ts:161
+#: src/providers/smb/ui/labels.ts:169
 msgid "Maximum log size (KiB)"
 msgstr "Taille maximale du journal (Kio)"
 
-#: src/providers/smb/ui/labels.ts:169
+#: src/providers/smb/ui/labels.ts:176
+msgid "Printers, user shares and UNIX extensions."
+msgstr "Imprimantes, partages utilisateur et extensions UNIX."
+
+#: src/providers/smb/ui/labels.ts:178
 msgid "Share printers"
 msgstr "Partager les imprimantes"
 
-#: src/providers/smb/ui/labels.ts:170
+#: src/providers/smb/ui/labels.ts:179
 msgid "Printing system"
 msgstr "Système d'impression"
 
-#: src/providers/smb/ui/labels.ts:171
+#: src/providers/smb/ui/labels.ts:180
 msgid "Maximum user shares"
 msgstr "Nombre maximal de partages utilisateur"
 
-#: src/providers/smb/ui/labels.ts:171
+#: src/providers/smb/ui/labels.ts:180
 msgid "0 disables shares created by users with net usershare."
 msgstr "0 désactive les partages créés par les utilisateurs avec net usershare."
 
-#: src/providers/smb/ui/labels.ts:172
+#: src/providers/smb/ui/labels.ts:181
 msgid "Allow guest access to user shares"
 msgstr "Autoriser l'accès invité aux partages utilisateur"
 
-#: src/providers/smb/ui/labels.ts:173
+#: src/providers/smb/ui/labels.ts:182
 msgid "SMB1 UNIX extensions"
 msgstr "Extensions UNIX SMB1"
 
-#: src/providers/smb/ui/labels.ts:174
+#: src/providers/smb/ui/labels.ts:183
 msgid "SMB3 POSIX extensions"
 msgstr "Extensions POSIX SMB3"
 
@@ -1540,7 +1578,7 @@ msgstr "Extensions POSIX SMB3"
 msgid "Add a VFS module"
 msgstr "Ajouter un module VFS"
 
-#: src/providers/smb/ui/vfs-card.tsx:89 src/providers/smb/ui/vfs-card.tsx:257
+#: src/providers/smb/ui/vfs-card.tsx:89 src/providers/smb/ui/vfs-card.tsx:261
 msgid "Module"
 msgstr "Module"
 
@@ -1560,69 +1598,73 @@ msgstr "catia et streams_xattr sont également ajoutés, dans l'ordre exigé par
 msgid "Options added"
 msgstr "Options ajoutées"
 
-#: src/providers/smb/ui/vfs-card.tsx:139
+#: src/providers/smb/ui/vfs-card.tsx:141
 msgid "Options of $0"
 msgstr "Options de $0"
 
-#: src/providers/smb/ui/vfs-card.tsx:149
+#: src/providers/smb/ui/vfs-card.tsx:151
 msgid "Not set"
 msgstr "Non défini"
 
-#: src/providers/smb/ui/vfs-card.tsx:155
+#: src/providers/smb/ui/vfs-card.tsx:157
 msgid "Documentation"
 msgstr "Documentation"
 
-#: src/providers/smb/ui/vfs-card.tsx:201
+#: src/providers/smb/ui/vfs-card.tsx:203
 msgid "Remove module $0?"
 msgstr "Retirer le module $0 ?"
 
-#: src/providers/smb/ui/vfs-card.tsx:203
+#: src/providers/smb/ui/vfs-card.tsx:205
 msgid "Its $0 option is removed as well."
 msgid_plural "Its $0 options are removed as well."
 msgstr[0] "Son option est également retirée."
 msgstr[1] "Ses $0 options sont également retirées."
 
-#: src/providers/smb/ui/vfs-card.tsx:204
+#: src/providers/smb/ui/vfs-card.tsx:206
 msgid "The module is removed from vfs objects."
 msgstr "Le module est retiré de vfs objects."
 
-#: src/providers/smb/ui/vfs-card.tsx:209 src/providers/smb/ui/vfs-card.tsx:257
+#: src/providers/smb/ui/vfs-card.tsx:211 src/providers/smb/ui/vfs-card.tsx:261
 msgid "Options"
 msgstr "Options"
 
-#: src/providers/smb/ui/vfs-card.tsx:211
+#: src/providers/smb/ui/vfs-card.tsx:213
 msgid "Move up"
 msgstr "Monter"
 
-#: src/providers/smb/ui/vfs-card.tsx:213
+#: src/providers/smb/ui/vfs-card.tsx:215
 msgid "Move down"
 msgstr "Descendre"
 
-#: src/providers/smb/ui/vfs-card.tsx:220
+#: src/providers/smb/ui/vfs-card.tsx:222
 msgid "Not documented"
 msgstr "Non documenté"
 
-#: src/providers/smb/ui/vfs-card.tsx:240
+#: src/providers/smb/ui/vfs-card.tsx:242
 msgid "Customize for this share"
 msgstr "Personnaliser pour ce partage"
 
-#: src/providers/smb/ui/vfs-card.tsx:244
+#: src/providers/smb/ui/vfs-card.tsx:246
 msgid "Add module"
 msgstr "Ajouter un module"
 
-#: src/providers/smb/ui/vfs-card.tsx:254
+#: src/providers/smb/ui/vfs-card.tsx:253
+msgid "Modules add features such as a recycle bin, macOS support, snapshots or auditing. They run in the order of the list."
+msgstr "Les modules ajoutent des fonctions comme la corbeille, la prise en charge de macOS, les instantanés ou l'audit. Ils s'exécutent dans l'ordre de la liste."
+
+#: src/providers/smb/ui/vfs-card.tsx:258
 msgid "This share uses the modules of the global settings."
 msgstr "Ce partage utilise les modules des paramètres globaux."
 
-#: src/providers/smb/ui/vfs-card.tsx:257
+#: src/providers/smb/ui/vfs-card.tsx:261
 msgid "Purpose"
 msgstr "Rôle"
 
-#: src/providers/smb/ui/vfs-card.tsx:259
+#: src/providers/smb/ui/vfs-card.tsx:263
 msgid "No VFS module"
 msgstr "Aucun module VFS"
 
-#: src/providers/smb/ui/vfs-card.tsx:260
+#: src/providers/smb/ui/vfs-card.tsx:264
 msgid "Modules add features such as a recycle bin, macOS support, snapshots or auditing."
 msgstr "Les modules ajoutent des fonctions comme la corbeille, la prise en charge de macOS, les instantanés ou l'audit."
 

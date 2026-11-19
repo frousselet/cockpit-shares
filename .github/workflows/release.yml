@@ -48,7 +48,8 @@ jobs:
         run: make unit-check
 
       - name: Build the Debian package
-        run: make deb
+        # the version comes from the tag name, "v" prefix removed
+        run: make deb VERSION="${TAG#v}"
 
       - name: Attach the package to the release
         env:

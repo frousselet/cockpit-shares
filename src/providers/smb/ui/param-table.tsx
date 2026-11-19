@@ -112,7 +112,7 @@ export const ParameterTable = ({ section, title }: { section: string, title?: st
                 <Tooltip key="unk" content={_("This parameter is not documented by Samba; testparm ignores unknown parameters.")}>
                     <Label color="red" isCompact>{_("Unknown")}</Label>
                 </Tooltip>);
-        if (!global && r.def?.context === "G" && r.value !== undefined)
+        if (!global && (r.def?.context === "G" || (isParametric(r.name) && getVfsOption(r.name)?.option.global)) && r.value !== undefined)
             labels.push(
                 <Tooltip key="glob" content={_("Global parameter found in a share section: Samba ignores it here.")}>
                     <Label color="red" isCompact>{_("Global only")}</Label>

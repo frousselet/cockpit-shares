@@ -112,15 +112,17 @@ const AddModuleDialog = ({ section, current }: { section: string, current: strin
 const ModuleOptionsDialog = ({ section, module }: { section: string, module: VfsModule }) => {
     const smb = useSmb();
     const accounts = useAccounts();
-    const original = useMemo(() => Object.fromEntries(module.options.map(o => [o.name, smb.config.conf.get(section, o.name)])),
+    // options documented as global only are offered in the global settings only
+    const options = module.options.filter(o => !o.global || isGlobalSection(section));
+    const original = useMemo(() => Object.fromEntries(options.map(o => [o.name, smb.config.conf.get(section, o.name)])),
         // eslint-disable-next-line react-hooks/exhaustive-deps
                              []);
     const [values, setValues] = useState<Record<string, string | undefined>>(original);
     const { error, busy, submit } = useSubmit();
-    const problems = Object.fromEntries(module.options.map(o => [o.name, validateParam(o.name, values[o.name])]));
+    const problems = Object.fromEntries(options.map(o => [o.name, validateParam(o.name, values[o.name])]));
 
     const onSubmit = () => submit(async () => {
-        const changed = module.options.map(o => o.name).filter(n => values[n] !== original[n]);
+        const changed = options.map(o => o.name).filter(n => values[n] !== original[n]);
         if (!changed.length)
             return;
         const result = await smb.update(conf => {
@@ -140,7 +142,7 @@ const ModuleOptionsDialog = ({ section, module }: { section: string, module: Vfs
                      isDisabled={Object.values(problems).some(Boolean)} onSubmit={onSubmit} variant="large"
         >
             <Form isHorizontal onSubmit={ev => { ev.preventDefault(); onSubmit() }}>
-                {module.options.map(o => {
+                {options.map(o => {
                     const id = "smb-vfs-opt-" + o.name.replace(/\W+/g, "-");
                     return (
                         <FormGroup key={o.name} label={<code>{o.name}</code>} fieldId={id}>

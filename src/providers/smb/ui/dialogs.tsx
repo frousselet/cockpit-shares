@@ -20,7 +20,7 @@ import { TypeaheadSelect, type TypeaheadSelectOption } from "cockpit-components-
 import { useSmb, type SmbState } from "../state.tsx";
 import { isGlobalSection, normalizeKey } from "../smbconf.ts";
 import {
-    PARAMETERS, VFS_MODULES, getParam, catalogResolver, isParametric, normalizeParametric, parametricTemplate,
+    PARAMETERS, VFS_MODULES, getParam, getVfsOption, catalogResolver, isParametric, normalizeParametric, parametricTemplate,
 } from "../catalog.ts";
 import type { SaveResult } from "../backend.ts";
 import { ErrorAlert } from "../../../lib/utils.tsx";
@@ -243,7 +243,7 @@ export const AddParamDialog = ({ section, exclude }: { section: string, exclude:
         list.push({ decorator: "header", content: _("VFS module options"), key: "h-v" });
         for (const m of VFS_MODULES)
             for (const o of m.options)
-                if (!exclude.has(o.name.toLowerCase()))
+                if (!exclude.has(o.name.toLowerCase()) && (global || !o.global))
                     list.push({ value: o.name, content: o.name, description: m.summary });
         return list;
     }, [exclude, global]);
@@ -258,7 +258,9 @@ export const AddParamDialog = ({ section, exclude }: { section: string, exclude:
             ? _("Samba does not know this parameter. Module options are written as module:option.")
             : exclude.has(canonical)
                 ? _("This parameter is already set, edit it in the list.")
-                : (!global && getParam(key)?.context === "G" ? _("This parameter is only valid in the global settings.") : null);
+                : (!global && (getParam(key)?.context === "G" || getVfsOption(key)?.option.global)
+                    ? _("This parameter is only valid in the global settings.")
+                    : null);
     const problem = validateParam(key, value);
 
     const onSubmit = () => submit(async () => {

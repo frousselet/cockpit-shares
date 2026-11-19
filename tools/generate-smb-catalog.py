@@ -335,7 +335,7 @@ def parse_vfs_modules(src: pathlib.Path):
                 text = tidy_html(to_html(body))
                 entry["doc"] = text
                 entry["stackable"] = "is stackable" in text and "not stackable" not in text
-            elif title == "OPTIONS":
+            elif title in ("OPTIONS", "GLOBAL OPTIONS", "CONFIGURATION"):
                 for vle in sect.iter("varlistentry"):
                     term_el = vle.find("term")
                     if term_el is None:
@@ -355,6 +355,8 @@ def parse_vfs_modules(src: pathlib.Path):
                         inner.extend(list(li))
                         doc = tidy_html(to_html(inner))
                     opt = {"name": optname, "hint": hint, "type": otype, "doc": doc}
+                    if title == "GLOBAL OPTIONS":
+                        opt["global"] = True
                     if values:
                         opt["enum"] = values
                     dm = re.search(r"(?:default(?: value)? (?:is|of|to)|defaults to)\s*(?:<code>)?\s*&quot;?“?([\w./:+-]+)", doc, re.I)

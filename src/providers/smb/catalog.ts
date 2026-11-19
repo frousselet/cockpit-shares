@@ -41,6 +41,8 @@ export interface VfsOption {
     type: ParamType;
     enum?: EnumValue[];
     default_hint?: string;
+    /** only valid in [global] (vfs_fruit "GLOBAL OPTIONS") */
+    global?: boolean;
     doc: string;
 }
 

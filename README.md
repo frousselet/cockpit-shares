@@ -36,7 +36,7 @@ other protocols (NFS, ...) can be added later.
 **Every parameter**
 - catalog generated from the Samba 4.25.1 documentation sources: 550
   `smb.conf` parameters (type, scope, accepted values, synonyms, inverted
-  synonyms such as `writeable`, default value, documentation) and 169 options
+  synonyms such as `writeable`, default value, documentation) and 177 options
   of 49 VFS modules;
 - per section editor (global or share): parameters set in the section, or
   every parameter with the inherited or default value that really applies

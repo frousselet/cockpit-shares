@@ -1,0 +1,61 @@
+{
+  "name": "shares",
+  "description": "Cockpit module to manage file shares (SMB/Samba)",
+  "type": "module",
+  "main": "index.js",
+  "repository": "",
+  "author": "",
+  "license": "LGPL-2.1",
+  "engines": {
+    "node": ">= 18"
+  },
+  "scripts": {
+    "watch": "ESBUILD_WATCH='true' ./build.js",
+    "build": "./build.js",
+    "test": "node --test test/unit/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "eslint": "eslint src/",
+    "eslint:fix": "eslint --fix src/",
+    "stylelint": "stylelint src/**/*.scss",
+    "stylelint:fix": "stylelint --fix src/**/*.scss"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.13",
+    "@types/react-dom": "18.3.1",
+    "@types/throttle-debounce": "5.0.2",
+    "@typescript-eslint/eslint-plugin": "8.72.2",
+    "esbuild-wasm": "0.28.2",
+    "eslint": "8.57.1",
+    "eslint-config-standard": "17.1.0",
+    "eslint-config-standard-jsx": "11.0.0",
+    "eslint-config-standard-react": "13.0.0",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "6.6.0",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "stylelint": "17.16.0",
+    "stylelint-config-recommended-scss": "17.0.1",
+    "stylelint-config-standard": "40.0.0",
+    "stylelint-config-standard-scss": "17.0.0",
+    "stylelint-formatter-pretty": "4.0.1",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@patternfly/patternfly": "6.7.0",
+    "@patternfly/react-core": "6.7.0",
+    "@patternfly/react-icons": "6.7.0",
+    "@patternfly/react-styles": "6.7.0",
+    "@patternfly/react-table": "6.7.0",
+    "@patternfly/react-tokens": "6.7.0",
+    "argparse": "3.0.4",
+    "dequal": "^2.0.3",
+    "esbuild": "0.28.2",
+    "esbuild-sass-plugin": "3.7.0",
+    "gettext-parser": "10.0.0",
+    "prop-types": "15.8.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "throttle-debounce": "5.0.2"
+  }
+}

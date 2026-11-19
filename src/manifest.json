@@ -1,0 +1,27 @@
+{
+    "requires": {
+        "cockpit": "300"
+    },
+
+    "menu": {
+        "index": {
+            "label": "File sharing",
+            "order": 35,
+            "docs": [
+                {
+                    "label": "Samba configuration reference (smb.conf)",
+                    "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+                },
+                {
+                    "label": "Samba file serving guide",
+                    "url": "https://wiki.samba.org/index.php/Setting_up_Samba_as_a_Standalone_Server"
+                }
+            ],
+            "keywords": [
+                {
+                    "matches": ["samba", "smb", "cifs", "share", "shares", "file sharing", "windows", "smb.conf", "netbios", "network drive"]
+                }
+            ]
+        }
+    }
+}

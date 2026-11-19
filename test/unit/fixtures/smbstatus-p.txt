@@ -1,0 +1,5 @@
+
+Samba version 4.19.5-Ubuntu
+PID     Username     Group        Machine                                   Protocol Version  Encryption           Signing              
+----------------------------------------------------------------------------------------------------------------------------------------
+2274    nobody       nogroup      127.0.0.1 (ipv4:127.0.0.1:44522)          SMB3_11           -                    partial(AES-128-GMAC)

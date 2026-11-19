@@ -1,0 +1,18 @@
+/*
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ */
+
+import "patternfly/patternfly-6-cockpit.scss";
+import "polyfills";
+import "cockpit-dark-theme";
+
+import React from "react";
+import { createRoot } from "react-dom/client";
+
+import { Application } from "./app.tsx";
+
+import "./app.scss";
+
+document.addEventListener("DOMContentLoaded", () => {
+    createRoot(document.getElementById("app")!).render(<Application />);
+});

@@ -1,0 +1,185 @@
+// SPDX-License-Identifier: LGPL-2.1-or-later
+@use "page.scss";
+@use "ct-card.scss";
+
+.shares-muted,
+.shares-param-fallback {
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+.shares-param-value {
+  font-weight: var(--pf-t--global--font--weight--body--bold);
+  word-break: break-word;
+}
+
+.shares-param-cell {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--pf-t--global--spacer--xs);
+  align-items: center;
+}
+
+.shares-param-name,
+.shares-mode {
+  font-size: var(--pf-t--global--font--size--sm);
+}
+
+.shares-more {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--pf-t--global--spacer--sm);
+}
+
+.shares-service-description {
+  color: var(--pf-t--global--text--color--subtle);
+  font-size: var(--pf-t--global--font--size--sm);
+}
+
+.shares-error-detail,
+.shares-preview,
+.shares-diff {
+  font-family: var(--pf-t--global--font--family--mono);
+  font-size: var(--pf-t--global--font--size--sm);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.shares-preview,
+.shares-diff {
+  background: var(--pf-t--global--background--color--secondary--default);
+  padding: var(--pf-t--global--spacer--sm);
+  border-radius: var(--pf-t--global--border--radius--small);
+  max-block-size: 30rem;
+  overflow: auto;
+}
+
+.shares-diff-add {
+  color: var(--pf-t--global--text--color--status--success--default);
+}
+
+.shares-diff-del {
+  color: var(--pf-t--global--text--color--status--danger--default);
+}
+
+.shares-diff-skip {
+  color: var(--pf-t--global--text--color--subtle);
+  font-style: italic;
+}
+
+.shares-diagnostics {
+  margin-block-start: var(--pf-t--global--spacer--sm);
+
+  code {
+    white-space: pre-wrap;
+  }
+}
+
+.shares-short-input {
+  max-inline-size: 10rem;
+}
+
+.shares-dialog-divider {
+  margin-block: var(--pf-t--global--spacer--md);
+}
+
+.shares-doc-panel {
+  margin-block-start: var(--pf-t--global--spacer--lg);
+  padding: var(--pf-t--global--spacer--md);
+  border: var(--pf-t--global--border--width--regular) solid var(--pf-t--global--border--color--default);
+  border-radius: var(--pf-t--global--border--radius--small);
+  max-block-size: 22rem;
+  overflow: auto;
+}
+
+.shares-doc-popover {
+  max-block-size: 28rem;
+  overflow: auto;
+}
+
+// documentation generated from the Samba sources
+.shares-doc {
+  font-size: var(--pf-t--global--font--size--sm);
+
+  p,
+  ul,
+  ol,
+  dl,
+  pre {
+    margin-block-end: var(--pf-t--global--spacer--sm);
+  }
+
+  ul,
+  ol {
+    padding-inline-start: var(--pf-t--global--spacer--lg);
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  dt {
+    font-weight: var(--pf-t--global--font--weight--body--bold);
+  }
+
+  dd {
+    margin-inline-start: var(--pf-t--global--spacer--lg);
+  }
+
+  pre {
+    font-family: var(--pf-t--global--font--family--mono);
+    white-space: pre-wrap;
+    background: var(--pf-t--global--background--color--secondary--default);
+    padding: var(--pf-t--global--spacer--xs) var(--pf-t--global--spacer--sm);
+  }
+
+  code {
+    font-family: var(--pf-t--global--font--family--mono);
+  }
+
+  .smb-doc-note,
+  .smb-doc-warning,
+  .smb-doc-tip,
+  .smb-doc-important,
+  .smb-doc-caution {
+    border-inline-start: 3px solid var(--pf-t--global--border--color--status--info--default);
+    padding-inline-start: var(--pf-t--global--spacer--sm);
+    margin-block-end: var(--pf-t--global--spacer--sm);
+  }
+
+  .smb-doc-warning,
+  .smb-doc-caution {
+    border-inline-start-color: var(--pf-t--global--border--color--status--warning--default);
+  }
+}
+
+.shares-doc-linked .smb-ref {
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+
+.shares-substitutions {
+  margin-block-start: var(--pf-t--global--spacer--md);
+
+  summary {
+    cursor: pointer;
+    font-weight: var(--pf-t--global--font--weight--body--bold);
+  }
+}
+
+.shares-vfs-options {
+  font-family: var(--pf-t--global--font--family--mono);
+  font-size: var(--pf-t--global--font--size--sm);
+}
+
+.shares-option-doc {
+  margin-block-start: var(--pf-t--global--spacer--xs);
+}
+
+// cards of guided settings: two columns on wide screens
+.shares-cards.ct-cards-grid > .pf-v6-c-card.ct-card-info {
+  grid-column: auto;
+}

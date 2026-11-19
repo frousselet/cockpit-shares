@@ -1,0 +1,48 @@
+---------------
+Unix username:        alice
+NT username:          
+Account Flags:        [U          ]
+User SID:             S-1-5-21-2419131039-2446547774-2544821838-1000
+Primary Group SID:    S-1-5-21-2419131039-2446547774-2544821838-513
+Full Name:            Alice Martin
+Home Directory:       \\NAS\alice
+HomeDir Drive:        
+Logon Script:         
+Profile Path:         \\NAS\alice\profile
+Domain:               NAS
+Account desc:         
+Workstations:         
+Munged dial:          
+Logon time:           0
+Logoff time:          never
+Kickoff time:         never
+Password last set:    Thu, 19 Nov 2026 15:20:00 UTC
+Password can change:  Thu, 19 Nov 2026 15:20:00 UTC
+Password must change: never
+Last bad password   : 0
+Bad password count  : 0
+Logon hours         : FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+---------------
+Unix username:        bob
+NT username:          
+Account Flags:        [DUX        ]
+User SID:             S-1-5-21-2419131039-2446547774-2544821838-1001
+Primary Group SID:    S-1-5-21-2419131039-2446547774-2544821838-513
+Full Name:            
+Home Directory:       \\NAS\bob
+HomeDir Drive:        
+Logon Script:         
+Profile Path:         \\NAS\bob\profile
+Domain:               NAS
+Account desc:         
+Workstations:         
+Munged dial:          
+Logon time:           0
+Logoff time:          never
+Kickoff time:         never
+Password last set:    0
+Password can change:  0
+Password must change: never
+Last bad password   : 0
+Bad password count  : 3
+Logon hours         : FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

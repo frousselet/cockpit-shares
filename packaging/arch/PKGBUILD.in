@@ -1,0 +1,15 @@
+pkgname=cockpit-shares
+pkgver=VERSION
+pkgrel=1
+pkgdesc='Cockpit page to manage file shares (SMB/Samba)'
+arch=('any')
+url=''
+license=(LGPL-2.1-or-later)
+source=("SOURCE")
+sha256sums=('SKIP')
+
+package() {
+  depends=(cockpit samba)
+  cd $pkgname
+  make DESTDIR="$pkgdir" install PREFIX=/usr
+}

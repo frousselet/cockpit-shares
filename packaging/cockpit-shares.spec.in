@@ -1,0 +1,69 @@
+Name: cockpit-shares
+Version: %{VERSION}
+Release: 1%{?dist}
+Summary: Cockpit page to manage file shares (SMB/Samba)
+License: LGPL-2.1-or-later
+URL:     https://cockpit-project.org
+
+# distributions which ship nodejs-esbuild can rebuild the bundle during package build
+%if 0%{?fedora} >= 42
+%define rebuild_bundle 1
+%endif
+
+Source0: %{name}-%{version}.tar.xz
+Source1: %{name}-node-%{version}.tar.xz
+
+BuildArch: noarch
+%if ! 0%{?suse_version}
+ExclusiveArch: %{nodejs_arches} noarch
+%endif
+BuildRequires: make
+%if 0%{?suse_version}
+BuildRequires: appstream-glib
+%else
+BuildRequires: libappstream-glib
+%endif
+BuildRequires: gettext
+%if %{defined rebuild_bundle}
+BuildRequires: /usr/bin/node
+BuildRequires: nodejs-esbuild
+%endif
+
+Requires: cockpit-bridge
+Recommends: samba
+Recommends: samba-common-tools
+
+%{NPM_PROVIDES}
+
+%description
+Create and manage SMB shares, every smb.conf parameter, Samba users,
+connected clients and the Samba services from the Cockpit web console.
+
+%prep
+%autosetup -n %{name}
+%if %{defined rebuild_bundle}
+%setup -q -D -T -a 1 -n %{name}
+%endif
+
+%build
+%if %{defined rebuild_bundle}
+rm -rf dist
+NODE_ENV=production NODE_PATH=/usr/lib/node_modules:$(echo /usr/lib/node_modules_*) ./build.js
+%endif
+
+%install
+%make_install PREFIX=/usr
+
+# drop source maps, they are large and just for debugging
+find %{buildroot}%{_datadir}/cockpit/ -name '*.map' | xargs --no-run-if-empty rm --verbose
+
+%check
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*
+
+%files
+%doc README.md
+%license LICENSE dist/index.js.LEGAL.txt
+%{_datadir}/cockpit/*
+%{_datadir}/metainfo/*
+
+%changelog

@@ -1,0 +1,61 @@
+# SPDX-License-Identifier: LGPL-2.1-or-later
+#
+# Builds the Debian package for every pushed tag and attaches it to the
+# GitHub release of that tag, created when it does not exist yet.
+# "Run workflow" does the same for an existing tag.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build and publish
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  deb:
+    runs-on: ubuntu-24.04
+    env:
+      TAG: ${{ inputs.tag || github.ref_name }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Check out the tag
+        uses: actions/checkout@v7
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          # the package version comes from "git describe"
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install the build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gettext
+
+      - name: Run the unit tests
+        run: make unit-check
+
+      - name: Build the Debian package
+        run: make deb
+
+      - name: Attach the package to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deb=$(ls cockpit-shares_*_all.deb)
+          if gh release view "$TAG" >/dev/null 2>&1; then
+              gh release upload "$TAG" "$deb" --clobber
+          else
+              gh release create "$TAG" "$deb" --title "cockpit-shares $TAG" --generate-notes
+          fi

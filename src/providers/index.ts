@@ -7,5 +7,6 @@
 
 import type { ShareProvider } from "./types.ts";
 import { smbProvider } from "./smb/provider.tsx";
+import { nfsProvider } from "./nfs/provider.tsx";
 
-export const PROVIDERS: ShareProvider[] = [smbProvider];
+export const PROVIDERS: ShareProvider[] = [smbProvider, nfsProvider];

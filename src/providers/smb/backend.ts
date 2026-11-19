@@ -15,13 +15,13 @@ import {
     parseSambaVersion, versionAtLeast, parseStat, type Diagnostic, type SambaUser, type SmbStatus, type PathInfo,
 } from "./parsers.ts";
 
+import {
+    run, script, writeConfigFile, CommandError, ConflictError, createDirectory, readFile, BACKUP_DIR,
+} from "../../lib/system.ts";
+
+export { run, CommandError, ConflictError, createDirectory, readFile, BACKUP_DIR };
+
 const _ = cockpit.gettext;
-
-/* Samba tools live in sbin on most distributions, which is not always in the bridge's PATH */
-const ENV = ["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "LC_ALL=C"];
-
-export const BACKUP_DIR = "/var/lib/cockpit-shares/backups";
-const BACKUP_KEEP = 20;
 
 export interface SmbEnvironment {
     installed: boolean;
@@ -37,44 +37,6 @@ export interface SmbEnvironment {
         addc: string | null;
         wsdd: string | null;
     };
-}
-
-export class CommandError extends Error {
-    detail: string;
-    constructor(message: string, detail = "") {
-        super(message);
-        this.detail = detail;
-    }
-}
-
-function errorText(ex: unknown): string {
-    if (ex instanceof Error)
-        return ex.message;
-    if (ex && typeof ex === "object" && "message" in ex)
-        return String((ex as { message: unknown }).message);
-    return String(ex);
-}
-
-export async function run(args: string[], options: { superuser?: "try" | "require", input?: string } = {}): Promise<string> {
-    try {
-        const proc = cockpit.spawn(args, { superuser: options.superuser ?? "try", err: "message", environ: ENV });
-        if (options.input !== undefined)
-            proc.input(options.input);
-        return await proc;
-    } catch (ex) {
-        throw new CommandError(cockpit.format(_("Command $0 failed"), args[0]), errorText(ex));
-    }
-}
-
-async function script(code: string, args: string[], options: { superuser?: "try" | "require", input?: string } = {}): Promise<string> {
-    try {
-        const proc = cockpit.script(code, args, { superuser: options.superuser ?? "try", err: "message", environ: ENV });
-        if (options.input !== undefined)
-            proc.input(options.input);
-        return await proc;
-    } catch (ex) {
-        throw new CommandError(_("Command failed"), errorText(ex));
-    }
 }
 
 const DETECT_SCRIPT = `
@@ -180,8 +142,6 @@ export async function builtinDefaults(): Promise<Map<string, string>> {
 
 /* === configuration file ======================================== */
 
-export class ConflictError extends Error {}
-
 export class ValidationFailed extends Error {
     diagnostics: Diagnostic[];
     constructor(diagnostics: Diagnostic[]) {
@@ -189,17 +149,6 @@ export class ValidationFailed extends Error {
         this.diagnostics = diagnostics;
     }
 }
-
-const BACKUP_SCRIPT = `
-set -e
-file="$1"; dir="$2"; keep="$3"
-[ -f "$file" ] || exit 0
-mkdir -p "$dir"
-chmod 0700 "$dir"
-base=$(basename "$file")
-cp -p "$file" "$dir/$base.$(date +%Y%m%d-%H%M%S)"
-ls -1t "$dir/$base."* 2>/dev/null | tail -n +$((keep + 1)) | while read -r old; do rm -f -- "$old"; done
-`;
 
 export interface SaveResult {
     tag: string;
@@ -217,21 +166,7 @@ export async function saveConfig(env: SmbEnvironment, text: string, tag: string 
     if (!check.ok)
         throw new ValidationFailed(check.diagnostics);
 
-    await script(BACKUP_SCRIPT, [env.configFile, BACKUP_DIR, String(BACKUP_KEEP)], { superuser: "require" });
-
-    let newTag: string;
-    const handle = cockpit.file(env.configFile, { superuser: "require" });
-    try {
-        newTag = await handle.replace(text, tag ?? undefined);
-    } catch (ex) {
-        const problem = (ex as { problem?: string }).problem;
-        if (problem === "change-conflict")
-            throw new ConflictError(_("The configuration file was changed by someone else. Reload it and try again."));
-        throw new CommandError(_("Writing the configuration failed"), errorText(ex));
-    } finally {
-        handle.close();
-    }
-
+    const newTag = await writeConfigFile(env.configFile, text, tag);
     const reloaded = await reloadConfig();
     return { tag: newTag, diagnostics: check.diagnostics, reloaded };
 }
@@ -244,37 +179,6 @@ export async function reloadConfig(): Promise<boolean> {
     } catch {
         // nothing is running, the new configuration is used on next start
         return false;
-    }
-}
-
-export interface Backup {
-    file: string;
-    date: Date;
-}
-
-export async function listBackups(env: SmbEnvironment): Promise<Backup[]> {
-    const base = env.configFile.split("/").pop()!;
-    let out = "";
-    try {
-        out = await run(["sh", "-c", 'cd "$1" 2>/dev/null && ls -1 -- "$2".* 2>/dev/null || true', "--", BACKUP_DIR, base], { superuser: "require" });
-    } catch {
-        return [];
-    }
-    return out.split("\n").filter(Boolean)
-            .map(name => {
-                const m = name.match(/\.(\d{4})(\d{2})(\d{2})-(\d{2})(\d{2})(\d{2})$/);
-                const date = m ? new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : new Date(0);
-                return { file: `${BACKUP_DIR}/${name}`, date };
-            })
-            .sort((a, b) => b.date.getTime() - a.date.getTime());
-}
-
-export async function readFile(path: string): Promise<string> {
-    const handle = cockpit.file(path, { superuser: "require" });
-    try {
-        return (await handle.read()) ?? "";
-    } finally {
-        handle.close();
     }
 }
 
@@ -340,14 +244,6 @@ export async function statPath(path: string, env: SmbEnvironment): Promise<PathI
         }
     }
     return parseStat(`${out.trim()}|${context}`);
-}
-
-export async function createDirectory(path: string, owner: string, group: string, mode: string): Promise<void> {
-    if (!/^[0-7]{3,4}$/.test(mode))
-        throw new Error("invalid mode");
-    await run(["mkdir", "-p", "--", path], { superuser: "require" });
-    await run(["chown", `${owner}:${group}`, "--", path], { superuser: "require" });
-    await run(["chmod", mode, "--", path], { superuser: "require" });
 }
 
 export async function getSelinuxBooleans(names: string[]): Promise<Record<string, boolean>> {

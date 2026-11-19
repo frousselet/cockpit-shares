@@ -9,9 +9,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 
 
-#: src/index.html:7 src/providers/smb/ui/history-page.tsx:97
-#: src/providers/smb/ui/share-page.tsx:229
+#: src/index.html:7 src/providers/smb/ui/share-page.tsx:229
 #: src/providers/smb/ui/global-page.tsx:33 src/providers/smb/ui/labels.ts:175
+#: src/providers/nfs/ui/export-page.tsx:111
+#: src/providers/nfs/ui/settings-page.tsx:283 src/lib/history.tsx:104
 #: src/manifest.json:0 org.cockpit_project.shares.metainfo.xml:5
 msgid "File sharing"
 msgstr "Partage de fichiers"
@@ -20,88 +21,24 @@ msgstr "Partage de fichiers"
 msgid "Sections"
 msgstr "Sections"
 
-#: src/providers/smb/ui/history-page.tsx:35
-msgid "No difference."
-msgstr "Aucune différence."
-
-#: src/providers/smb/ui/history-page.tsx:39
-msgid "… $0 unchanged lines"
-msgstr "… $0 lignes inchangées"
-
-#: src/providers/smb/ui/history-page.tsx:56
-msgid "Version of $0"
-msgstr "Version du $0"
-
-#: src/providers/smb/ui/history-page.tsx:57
-msgid "Changes needed to go back to this version."
-msgstr "Modifications nécessaires pour revenir à cette version."
-
-#: src/providers/smb/ui/history-page.tsx:69
-msgid "Restore this version"
-msgstr "Restaurer cette version"
-
-#: src/providers/smb/ui/history-page.tsx:71
-msgid "Close"
-msgstr "Fermer"
-
-#: src/providers/smb/ui/history-page.tsx:98
-#: src/providers/smb/ui/history-page.tsx:106
-#: src/providers/smb/ui/history-page.tsx:110
-#: src/providers/smb/ui/status-card.tsx:226
-msgid "History of changes"
-msgstr "Historique des modifications"
-
-#: src/providers/smb/ui/history-page.tsx:109
-msgid "Administrative access is required to see the history."
-msgstr "L'accès administrateur est nécessaire pour consulter l'historique."
-
-#: src/providers/smb/ui/history-page.tsx:111
-msgid "Date of the change"
-msgstr "Date de la modification"
-
-#: src/providers/smb/ui/history-page.tsx:111
-msgid "Saved copy"
-msgstr "Copie enregistrée"
-
-#: src/providers/smb/ui/history-page.tsx:111
-#: src/providers/smb/ui/param-table.tsx:225
-#: src/providers/smb/ui/users-card.tsx:197
-#: src/providers/smb/ui/sessions-card.tsx:80
-#: src/providers/smb/ui/vfs-card.tsx:261 src/app.tsx:146
-msgid "Actions"
-msgstr "Actions"
-
-#: src/providers/smb/ui/history-page.tsx:112
-#: src/providers/smb/ui/users-card.tsx:81
-#: src/providers/smb/ui/users-card.tsx:200
-#: src/providers/smb/ui/sessions-card.tsx:82
-#: src/providers/smb/ui/share-page.tsx:202 src/app.tsx:149
-msgid "Loading..."
-msgstr "Chargement…"
-
-#: src/providers/smb/ui/history-page.tsx:113
-msgid "No previous version"
-msgstr "Aucune version précédente"
-
-#: src/providers/smb/ui/history-page.tsx:114
-msgid "A copy of the configuration is kept in $0 before every change made here."
-msgstr "Une copie de la configuration est conservée dans $0 avant chaque modification faite ici."
-
-#: src/providers/smb/ui/history-page.tsx:124
-msgid "Compare"
-msgstr "Comparer"
-
 #: src/providers/smb/ui/param-field.tsx:40
-#: src/providers/smb/ui/param-field.tsx:222
+#: src/providers/smb/ui/param-field.tsx:222 src/providers/nfs/ui/options.ts:91
+#: src/providers/nfs/ui/options.ts:99 src/providers/nfs/ui/options.ts:234
+#: src/providers/nfs/ui/settings-page.tsx:66
+#: src/providers/nfs/ui/settings-page.tsx:87
 msgid "Yes"
 msgstr "Oui"
 
 #: src/providers/smb/ui/param-field.tsx:40
-#: src/providers/smb/ui/param-field.tsx:223
+#: src/providers/smb/ui/param-field.tsx:223 src/providers/nfs/ui/options.ts:91
+#: src/providers/nfs/ui/options.ts:99 src/providers/nfs/ui/options.ts:234
+#: src/providers/nfs/ui/settings-page.tsx:66
+#: src/providers/nfs/ui/settings-page.tsx:88
 msgid "No"
 msgstr "Non"
 
 #: src/providers/smb/ui/param-field.tsx:71
+#: src/providers/nfs/ui/settings-page.tsx:73
 msgid "Line breaks are not allowed."
 msgstr "Les retours à la ligne sont interdits."
 
@@ -110,10 +47,12 @@ msgid "A value cannot end with a backslash."
 msgstr "Une valeur ne peut pas se terminer par une barre oblique inverse."
 
 #: src/providers/smb/ui/param-field.tsx:79
+#: src/providers/nfs/ui/settings-page.tsx:77
 msgid "Use yes or no."
 msgstr "Utilisez yes ou no."
 
 #: src/providers/smb/ui/param-field.tsx:81
+#: src/providers/nfs/ui/settings-page.tsx:75
 msgid "Enter a whole number."
 msgstr "Saisissez un nombre entier."
 
@@ -154,6 +93,7 @@ msgid "Users"
 msgstr "Utilisateurs"
 
 #: src/providers/smb/ui/param-field.tsx:167
+#: src/providers/nfs/ui/client-dialog.tsx:239
 msgid "Remove $0"
 msgstr "Retirer $0"
 
@@ -172,11 +112,14 @@ msgstr "Aucun compte correspondant"
 #: src/providers/smb/ui/param-field.tsx:211
 #: src/providers/smb/ui/share-page.tsx:78
 #: src/providers/smb/ui/share-page.tsx:317
+#: src/providers/nfs/ui/settings-page.tsx:159
 msgid "not set"
 msgstr "non défini"
 
 #: src/providers/smb/ui/param-field.tsx:213
 #: src/providers/smb/ui/vfs-card.tsx:151
+#: src/providers/nfs/ui/client-dialog.tsx:58
+#: src/providers/nfs/ui/settings-page.tsx:86
 msgid "Default ($0)"
 msgstr "Par défaut ($0)"
 
@@ -224,7 +167,7 @@ msgstr "Le nom est limité à 80 caractères."
 msgid "This name is reserved for the global settings."
 msgstr "Ce nom est réservé aux paramètres globaux."
 
-#: src/providers/smb/ui/shares.tsx:115
+#: src/providers/smb/ui/shares.tsx:115 src/providers/nfs/ui/options.ts:209
 msgid "Hidden"
 msgstr "Masqué"
 
@@ -244,7 +187,7 @@ msgstr "Corbeille"
 msgid "Each user's home directory"
 msgstr "Dossier personnel de chaque utilisateur"
 
-#: src/providers/smb/ui/shares.tsx:193
+#: src/providers/smb/ui/shares.tsx:193 src/providers/nfs/ui/exports.tsx:183
 msgid "This directory does not exist yet."
 msgstr "Ce dossier n'existe pas encore."
 
@@ -261,7 +204,8 @@ msgstr "Propriétaire $0, groupe $1, permissions $2"
 msgid "A share with this name exists already."
 msgstr "Un partage porte déjà ce nom."
 
-#: src/providers/smb/ui/shares.tsx:237
+#: src/providers/smb/ui/shares.tsx:237 src/providers/nfs/ui/exports.tsx:92
+#: src/providers/nfs/ui/exports.tsx:156
 msgid "Enter an absolute path."
 msgstr "Saisissez un chemin absolu."
 
@@ -273,11 +217,12 @@ msgstr "Saisissez un mode octal, par exemple 2775."
 msgid "Create SMB share"
 msgstr "Créer un partage SMB"
 
-#: src/providers/smb/ui/shares.tsx:260
+#: src/providers/smb/ui/shares.tsx:260 src/providers/nfs/ui/exports.tsx:175
 msgid "Create"
 msgstr "Créer"
 
-#: src/providers/smb/ui/shares.tsx:263
+#: src/providers/smb/ui/shares.tsx:263 src/providers/nfs/ui/export-page.tsx:266
+#: src/providers/nfs/ui/exports.tsx:177
 msgid "Directory"
 msgstr "Dossier"
 
@@ -285,7 +230,7 @@ msgstr "Dossier"
 msgid "/srv/share"
 msgstr "/srv/partage"
 
-#: src/providers/smb/ui/shares.tsx:273
+#: src/providers/smb/ui/shares.tsx:273 src/providers/nfs/ui/exports.tsx:186
 msgid "New directory"
 msgstr "Nouveau dossier"
 
@@ -314,7 +259,9 @@ msgid "Clients connect to $0"
 msgstr "Adresse pour les clients : $0"
 
 #: src/providers/smb/ui/shares.tsx:298 src/providers/smb/ui/share-page.tsx:324
-#: src/providers/smb/ui/labels.ts:60 src/app.tsx:143
+#: src/providers/smb/ui/labels.ts:60 src/providers/nfs/ui/export-page.tsx:271
+#: src/providers/nfs/ui/exports.tsx:227 src/providers/nfs/ui/exports.tsx:230
+#: src/app.tsx:143
 msgid "Description"
 msgstr "Description"
 
@@ -365,11 +312,15 @@ msgstr "Sans lui sur $0, testparm signale un avertissement. Ajouter catia fruit 
 #: src/providers/smb/ui/shares.tsx:322
 #: src/providers/smb/ui/sessions-card.tsx:63
 #: src/providers/smb/ui/sessions-card.tsx:89 src/providers/smb/ui/labels.ts:70
+#: src/providers/nfs/ui/options.ts:18 src/providers/nfs/ui/options.ts:71
+#: src/providers/nfs/ui/export-page.tsx:220
+#: src/providers/nfs/ui/exports.tsx:194
 msgid "Access"
 msgstr "Accès"
 
 #: src/providers/smb/ui/shares.tsx:324 src/providers/smb/ui/labels.ts:63
-#: src/app.tsx:86
+#: src/providers/nfs/ui/options.ts:73 src/providers/nfs/ui/export-page.tsx:189
+#: src/providers/nfs/ui/exports.tsx:196 src/app.tsx:86
 msgid "Read only"
 msgstr "Lecture seule"
 
@@ -442,11 +393,18 @@ msgid "The share is removed from smb.conf and clients are disconnected. The dire
 msgstr "Le partage est retiré de smb.conf et les clients sont déconnectés. Le dossier et ses fichiers sont conservés."
 
 #: src/providers/smb/ui/shares.tsx:404 src/providers/smb/ui/shares.tsx:441
+#: src/providers/nfs/ui/export-page.tsx:145 src/providers/nfs/ui/exports.tsx:74
+#: src/providers/nfs/ui/exports.tsx:117
 msgid "Delete"
 msgstr "Supprimer"
 
 #: src/providers/smb/ui/shares.tsx:433 src/providers/smb/ui/param-table.tsx:125
 #: src/providers/smb/ui/share-page.tsx:58
+#: src/providers/nfs/ui/export-page.tsx:168
+#: src/providers/nfs/ui/export-page.tsx:196
+#: src/providers/nfs/ui/settings-page.tsx:142
+#: src/providers/nfs/ui/settings-page.tsx:256
+#: src/providers/nfs/ui/exports.tsx:114
 msgid "Edit"
 msgstr "Modifier"
 
@@ -459,6 +417,7 @@ msgid "Enable"
 msgstr "Activer"
 
 #: src/providers/smb/ui/param-table.tsx:94
+#: src/providers/nfs/ui/settings-page.tsx:259
 msgid "Reset $0?"
 msgstr "Réinitialiser $0 ?"
 
@@ -471,6 +430,7 @@ msgid "The line is removed from this share, which then uses the value of the glo
 msgstr "La ligne est retirée de ce partage, qui reprend la valeur des paramètres globaux."
 
 #: src/providers/smb/ui/param-table.tsx:98
+#: src/providers/nfs/ui/settings-page.tsx:261
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -484,8 +444,8 @@ msgid "This parameter is not documented by Samba; testparm ignores unknown param
 msgstr "Samba ne documente pas ce paramètre ; testparm ignore les paramètres inconnus."
 
 #: src/providers/smb/ui/param-table.tsx:113
-#: src/providers/smb/ui/status-card.tsx:67
-#: src/providers/smb/ui/status-card.tsx:268 src/providers/smb/ui/labels.ts:33
+#: src/providers/smb/ui/status-card.tsx:168 src/providers/smb/ui/labels.ts:33
+#: src/providers/nfs/ui/status-card.tsx:109 src/lib/services.tsx:54
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -502,6 +462,7 @@ msgid "written as $0"
 msgstr "écrit $0"
 
 #: src/providers/smb/ui/param-table.tsx:131
+#: src/providers/nfs/ui/settings-page.tsx:263
 msgid "Reset to default"
 msgstr "Revenir à la valeur par défaut"
 
@@ -511,6 +472,7 @@ msgstr "Utiliser la valeur globale"
 
 #: src/providers/smb/ui/param-table.tsx:151
 #: src/providers/smb/ui/share-page.tsx:74
+#: src/providers/nfs/ui/settings-page.tsx:157
 msgid "empty"
 msgstr "vide"
 
@@ -557,16 +519,30 @@ msgstr "Paramètre"
 
 #: src/providers/smb/ui/param-table.tsx:222
 #: src/providers/smb/ui/dialogs.tsx:208 src/providers/smb/ui/dialogs.tsx:289
+#: src/providers/nfs/ui/settings-page.tsx:198
+#: src/providers/nfs/ui/settings-page.tsx:242
 msgid "Value"
 msgstr "Valeur"
 
 #: src/providers/smb/ui/param-table.tsx:223
+#: src/providers/nfs/ui/settings-page.tsx:242
 msgid "Default"
 msgstr "Par défaut"
 
 #: src/providers/smb/ui/param-table.tsx:223
 msgid "Inherited"
 msgstr "Hérité"
+
+#: src/providers/smb/ui/param-table.tsx:225
+#: src/providers/smb/ui/users-card.tsx:197
+#: src/providers/smb/ui/sessions-card.tsx:80
+#: src/providers/smb/ui/vfs-card.tsx:261
+#: src/providers/nfs/ui/export-page.tsx:220
+#: src/providers/nfs/ui/clients-card.tsx:57
+#: src/providers/nfs/ui/settings-page.tsx:242 src/lib/history.tsx:122
+#: src/app.tsx:146
+msgid "Actions"
+msgstr "Actions"
 
 #: src/providers/smb/ui/param-table.tsx:230
 msgid "No matching parameters"
@@ -610,6 +586,8 @@ msgstr "Ajouter un utilisateur Samba"
 
 #: src/providers/smb/ui/users-card.tsx:72 src/providers/smb/ui/dialogs.tsx:274
 #: src/providers/smb/ui/vfs-card.tsx:86
+#: src/providers/nfs/ui/client-dialog.tsx:214
+#: src/providers/nfs/ui/settings-page.tsx:184
 msgid "Add"
 msgstr "Ajouter"
 
@@ -628,6 +606,15 @@ msgstr "Compte système"
 #: src/providers/smb/ui/users-card.tsx:81
 msgid "Choose an account"
 msgstr "Choisissez un compte"
+
+#: src/providers/smb/ui/users-card.tsx:81
+#: src/providers/smb/ui/users-card.tsx:200
+#: src/providers/smb/ui/sessions-card.tsx:82
+#: src/providers/smb/ui/share-page.tsx:202
+#: src/providers/nfs/ui/clients-card.tsx:58 src/lib/history.tsx:124
+#: src/app.tsx:149
+msgid "Loading..."
+msgstr "Chargement…"
 
 #: src/providers/smb/ui/users-card.tsx:98
 msgid "Samba password of $0"
@@ -659,6 +646,9 @@ msgstr "Le compte ne pourra plus se connecter aux partages. Le compte système e
 #: src/providers/smb/ui/users-card.tsx:151
 #: src/providers/smb/ui/users-card.tsx:155
 #: src/providers/smb/ui/vfs-card.tsx:207 src/providers/smb/ui/vfs-card.tsx:216
+#: src/providers/nfs/ui/export-page.tsx:152
+#: src/providers/nfs/ui/export-page.tsx:169
+#: src/providers/nfs/ui/export-page.tsx:198
 msgid "Remove"
 msgstr "Retirer"
 
@@ -692,7 +682,8 @@ msgstr "Compte"
 msgid "Full name"
 msgstr "Nom complet"
 
-#: src/providers/smb/ui/users-card.tsx:195 src/app.tsx:144
+#: src/providers/smb/ui/users-card.tsx:195
+#: src/providers/nfs/ui/clients-card.tsx:57 src/app.tsx:144
 msgid "Status"
 msgstr "État"
 
@@ -713,6 +704,7 @@ msgid "Encrypted"
 msgstr "Chiffré"
 
 #: src/providers/smb/ui/sessions-card.tsx:49
+#: src/providers/nfs/ui/clients-card.tsx:71
 msgid "Disconnect $0?"
 msgstr "Déconnecter $0 ?"
 
@@ -723,6 +715,8 @@ msgstr "Le client perd ses fichiers ouverts et peut se reconnecter automatiqueme
 #: src/providers/smb/ui/sessions-card.tsx:51
 #: src/providers/smb/ui/sessions-card.tsx:55
 #: src/providers/smb/ui/share-page.tsx:190
+#: src/providers/nfs/ui/clients-card.tsx:73
+#: src/providers/nfs/ui/clients-card.tsx:75
 msgid "Disconnect"
 msgstr "Déconnecter"
 
@@ -733,7 +727,7 @@ msgid "Open files"
 msgstr "Fichiers ouverts"
 
 #: src/providers/smb/ui/sessions-card.tsx:63
-#: src/providers/smb/ui/sessions-card.tsx:89
+#: src/providers/smb/ui/sessions-card.tsx:89 src/lib/history.tsx:120
 msgid "File"
 msgstr "Fichier"
 
@@ -743,6 +737,9 @@ msgid "Opened"
 msgstr "Ouvert le"
 
 #: src/providers/smb/ui/sessions-card.tsx:76
+msgid "SMB clients"
+msgstr "Clients SMB"
+
 #: src/providers/smb/ui/sessions-card.tsx:79
 #: src/providers/smb/ui/share-page.tsx:200
 #: src/providers/smb/ui/share-page.tsx:353
@@ -762,7 +759,7 @@ msgstr "Ordinateur"
 
 #: src/providers/smb/ui/sessions-card.tsx:80
 #: src/providers/smb/ui/share-page.tsx:201 src/providers/smb/ui/labels.ts:25
-#: src/app.tsx:141
+#: src/providers/nfs/ui/clients-card.tsx:57 src/app.tsx:141
 msgid "Protocol"
 msgstr "Protocole"
 
@@ -780,7 +777,8 @@ msgid_plural "$0 open files"
 msgstr[0] "$0 fichier ouvert"
 msgstr[1] "$0 fichiers ouverts"
 
-#: src/providers/smb/ui/share-page.tsx:78
+#: src/providers/smb/ui/share-page.tsx:78 src/providers/nfs/ui/common.tsx:23
+#: src/providers/nfs/ui/client-dialog.tsx:210
 msgid "Everyone"
 msgstr "Tout le monde"
 
@@ -809,10 +807,12 @@ msgid "The samba_enable_home_dirs boolean is off."
 msgstr "Le booléen samba_enable_home_dirs est désactivé."
 
 #: src/providers/smb/ui/share-page.tsx:135
+#: src/providers/nfs/ui/export-page.tsx:83
 msgid "The directory does not exist"
 msgstr "Le dossier n'existe pas"
 
 #: src/providers/smb/ui/share-page.tsx:136
+#: src/providers/nfs/ui/export-page.tsx:88
 msgid "Create it"
 msgstr "Le créer"
 
@@ -868,7 +868,8 @@ msgstr "Aucun client n'est connecté à ce partage"
 msgid "Share $0 does not exist"
 msgstr "Le partage $0 n'existe pas"
 
-#: src/providers/smb/ui/share-page.tsx:247 src/app.tsx:180
+#: src/providers/smb/ui/share-page.tsx:247
+#: src/providers/nfs/ui/export-page.tsx:127 src/app.tsx:180
 msgid "Back to file sharing"
 msgstr "Retour au partage de fichiers"
 
@@ -907,11 +908,15 @@ msgstr "Adresse Windows"
 
 #: src/providers/smb/ui/share-page.tsx:330
 #: src/providers/smb/ui/share-page.tsx:338
+#: src/providers/nfs/ui/export-page.tsx:277
+#: src/providers/nfs/ui/export-page.tsx:285
 msgid "Copy"
 msgstr "Copier"
 
 #: src/providers/smb/ui/share-page.tsx:330
 #: src/providers/smb/ui/share-page.tsx:338
+#: src/providers/nfs/ui/export-page.tsx:277
+#: src/providers/nfs/ui/export-page.tsx:285
 msgid "Copied"
 msgstr "Copié"
 
@@ -925,187 +930,155 @@ msgstr "Adresse macOS et Linux"
 msgid "VFS modules"
 msgstr "Modules VFS"
 
-#: src/providers/smb/ui/status-card.tsx:60
-#: src/providers/smb/ui/status-card.tsx:204
-msgid "Loading"
-msgstr "Chargement"
-
-#: src/providers/smb/ui/status-card.tsx:62
-msgid "Running"
-msgstr "En cours d'exécution"
-
-#: src/providers/smb/ui/status-card.tsx:63
-msgid "Starting"
-msgstr "Démarrage"
-
-#: src/providers/smb/ui/status-card.tsx:64
-msgid "Stopping"
-msgstr "Arrêt"
-
-#: src/providers/smb/ui/status-card.tsx:65
-msgid "Failed to start"
-msgstr "Échec du démarrage"
-
-#: src/providers/smb/ui/status-card.tsx:66
-msgid "Not running"
-msgstr "Arrêté"
-
-#: src/providers/smb/ui/status-card.tsx:110
-msgid "Start and enable $0"
-msgstr "Démarrer et activer $0"
-
-#: src/providers/smb/ui/status-card.tsx:114
-msgid "Status unavailable"
-msgstr "État indisponible"
-
-#: src/providers/smb/ui/status-card.tsx:116
-msgid "Not started at boot"
-msgstr "Non lancé au démarrage"
-
-#: src/providers/smb/ui/status-card.tsx:117
-msgid "Started at boot"
-msgstr "Lancé au démarrage"
-
-#: src/providers/smb/ui/status-card.tsx:121
-msgid "$0 service"
-msgstr "Service $0"
-
-#: src/providers/smb/ui/status-card.tsx:149
+#: src/providers/smb/ui/status-card.tsx:49
 msgid "Restarting the file server failed"
 msgstr "Le redémarrage du serveur de fichiers a échoué"
 
-#: src/providers/smb/ui/status-card.tsx:162
+#: src/providers/smb/ui/status-card.tsx:62 src/providers/nfs/ui/common.tsx:68
 msgid "Restart now"
 msgstr "Redémarrer maintenant"
 
-#: src/providers/smb/ui/status-card.tsx:180
+#: src/providers/smb/ui/status-card.tsx:80
 msgid "Samba is not installed"
 msgstr "Samba n'est pas installé"
 
-#: src/providers/smb/ui/status-card.tsx:182
+#: src/providers/smb/ui/status-card.tsx:82
 msgid "Install the samba package to share directories with Windows, macOS and Linux computers."
 msgstr "Installez le paquet samba pour partager des dossiers avec des ordinateurs Windows, macOS et Linux."
 
-#: src/providers/smb/ui/status-card.tsx:183
+#: src/providers/smb/ui/status-card.tsx:83
 msgid "Samba shares directories with Windows, macOS and Linux computers."
 msgstr "Samba partage des dossiers avec des ordinateurs Windows, macOS et Linux."
 
-#: src/providers/smb/ui/status-card.tsx:184
+#: src/providers/smb/ui/status-card.tsx:84
 msgid "Install Samba"
 msgstr "Installer Samba"
 
-#: src/providers/smb/ui/status-card.tsx:199
+#: src/providers/smb/ui/status-card.tsx:99
 msgid "Cannot inspect the Samba installation"
 msgstr "Impossible d'examiner l'installation de Samba"
 
-#: src/providers/smb/ui/status-card.tsx:212
-#: src/providers/smb/ui/status-card.tsx:244
+#: src/providers/smb/ui/status-card.tsx:104 src/lib/services.tsx:47
+msgid "Loading"
+msgstr "Chargement"
+
+#: src/providers/smb/ui/status-card.tsx:112
+#: src/providers/smb/ui/status-card.tsx:144
 msgid "SMB file server"
 msgstr "Serveur de fichiers SMB"
 
-#: src/providers/smb/ui/status-card.tsx:225
+#: src/providers/smb/ui/status-card.tsx:125
 msgid "Global settings"
 msgstr "Paramètres globaux"
 
-#: src/providers/smb/ui/status-card.tsx:232
+#: src/providers/smb/ui/status-card.tsx:126
+#: src/providers/nfs/ui/status-card.tsx:80 src/lib/history.tsx:105
+#: src/lib/history.tsx:113 src/lib/history.tsx:117
+msgid "History of changes"
+msgstr "Historique des modifications"
+
+#: src/providers/smb/ui/status-card.tsx:132
 msgid "The firewall does not allow Samba yet"
 msgstr "Le pare-feu n'autorise pas encore Samba"
 
-#: src/providers/smb/ui/status-card.tsx:238
+#: src/providers/smb/ui/status-card.tsx:138
+#: src/providers/nfs/ui/status-card.tsx:95
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/providers/smb/ui/status-card.tsx:248
+#: src/providers/smb/ui/status-card.tsx:148
 msgid "Cannot read the configuration file"
 msgstr "Impossible de lire le fichier de configuration"
 
-#: src/providers/smb/ui/status-card.tsx:250
+#: src/providers/smb/ui/status-card.tsx:150
 msgid "$0 does not exist yet"
 msgstr "$0 n'existe pas encore"
 
-#: src/providers/smb/ui/status-card.tsx:251
+#: src/providers/smb/ui/status-card.tsx:151
 msgid "It is created with the first change made on this page."
 msgstr "Il sera créé à la première modification faite sur cette page."
 
-#: src/providers/smb/ui/status-card.tsx:254
+#: src/providers/smb/ui/status-card.tsx:154
 msgid "This server is an Active Directory domain controller"
 msgstr "Ce serveur est un contrôleur de domaine Active Directory"
 
-#: src/providers/smb/ui/status-card.tsx:255
+#: src/providers/smb/ui/status-card.tsx:155
 msgid "File shares can be managed here; domain settings are managed with samba-tool."
 msgstr "Les partages se gèrent ici ; les réglages du domaine se gèrent avec samba-tool."
 
-#: src/providers/smb/ui/status-card.tsx:259
+#: src/providers/smb/ui/status-card.tsx:159
 msgid "Samba cannot load the configuration"
 msgstr "Samba ne peut pas charger la configuration"
 
-#: src/providers/smb/ui/status-card.tsx:259
+#: src/providers/smb/ui/status-card.tsx:159
 msgid "testparm reports $0 warning"
 msgid_plural "testparm reports $0 warnings"
 msgstr[0] "testparm signale $0 avertissement"
 msgstr[1] "testparm signale $0 avertissements"
 
-#: src/providers/smb/ui/status-card.tsx:261
+#: src/providers/smb/ui/status-card.tsx:161
 msgid "Show details"
 msgstr "Afficher les détails"
 
-#: src/providers/smb/ui/status-card.tsx:261
+#: src/providers/smb/ui/status-card.tsx:161
 msgid "Hide details"
 msgstr "Masquer les détails"
 
-#: src/providers/smb/ui/status-card.tsx:267
+#: src/providers/smb/ui/status-card.tsx:167
+#: src/providers/nfs/ui/status-card.tsx:108
 msgid "Version"
 msgstr "Version"
 
-#: src/providers/smb/ui/status-card.tsx:271 src/providers/smb/ui/labels.ts:119
+#: src/providers/smb/ui/status-card.tsx:171 src/providers/smb/ui/labels.ts:119
 msgid "Server name"
 msgstr "Nom du serveur"
 
-#: src/providers/smb/ui/status-card.tsx:277
+#: src/providers/smb/ui/status-card.tsx:177
 msgid "Workgroup"
 msgstr "Groupe de travail"
 
-#: src/providers/smb/ui/status-card.tsx:281
+#: src/providers/smb/ui/status-card.tsx:181
 msgid "Role"
 msgstr "Rôle"
 
-#: src/providers/smb/ui/status-card.tsx:288
+#: src/providers/smb/ui/status-card.tsx:188
 msgid "File server"
 msgstr "Serveur de fichiers"
 
-#: src/providers/smb/ui/status-card.tsx:289
+#: src/providers/smb/ui/status-card.tsx:189
 msgid "Serves the shares (smbd)."
 msgstr "Sert les partages (smbd)."
 
-#: src/providers/smb/ui/status-card.tsx:292
+#: src/providers/smb/ui/status-card.tsx:192
 msgid "NetBIOS name service"
 msgstr "Service de noms NetBIOS"
 
-#: src/providers/smb/ui/status-card.tsx:293
+#: src/providers/smb/ui/status-card.tsx:193
 msgid "Makes the server visible to older clients (nmbd)."
 msgstr "Rend le serveur visible des anciens clients (nmbd)."
 
-#: src/providers/smb/ui/status-card.tsx:296
+#: src/providers/smb/ui/status-card.tsx:196
 msgid "Domain accounts"
 msgstr "Comptes du domaine"
 
-#: src/providers/smb/ui/status-card.tsx:297
+#: src/providers/smb/ui/status-card.tsx:197
 msgid "Resolves users and groups of a Windows domain (winbindd)."
 msgstr "Résout les utilisateurs et groupes d'un domaine Windows (winbindd)."
 
-#: src/providers/smb/ui/status-card.tsx:300
+#: src/providers/smb/ui/status-card.tsx:200
 msgid "Network discovery"
 msgstr "Découverte du réseau"
 
-#: src/providers/smb/ui/status-card.tsx:301
+#: src/providers/smb/ui/status-card.tsx:201
 msgid "Shows the server in the Network folder of Windows 10 and later (WS-Discovery)."
 msgstr "Affiche le serveur dans le dossier Réseau de Windows 10 et suivants (WS-Discovery)."
 
-#: src/providers/smb/ui/status-card.tsx:305
+#: src/providers/smb/ui/status-card.tsx:205
+#: src/providers/nfs/ui/status-card.tsx:136
 msgid "Services"
 msgstr "Services"
 
-#: src/providers/smb/ui/status-card.tsx:306
+#: src/providers/smb/ui/status-card.tsx:206
 msgid "No Samba systemd unit was found."
 msgstr "Aucune unité systemd de Samba n'a été trouvée."
 
@@ -1122,6 +1095,8 @@ msgid "These settings are only read at startup: $0"
 msgstr "Ces réglages ne sont lus qu'au démarrage : $0"
 
 #: src/providers/smb/ui/dialogs.tsx:88
+#: src/providers/nfs/ui/client-dialog.tsx:214
+#: src/providers/nfs/ui/settings-page.tsx:184
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -1131,6 +1106,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: src/providers/smb/ui/dialogs.tsx:205
+#: src/providers/nfs/ui/settings-page.tsx:182
 msgid "Edit $0"
 msgstr "Modifier $0"
 
@@ -1163,6 +1139,7 @@ msgid "This parameter is only valid in the global settings."
 msgstr "Ce paramètre n'est valable que dans les paramètres globaux."
 
 #: src/providers/smb/ui/dialogs.tsx:279
+#: src/providers/nfs/ui/client-dialog.tsx:157
 msgid "Use \"$0\""
 msgstr "Utiliser « $0 »"
 
@@ -1231,6 +1208,7 @@ msgid "RPC services"
 msgstr "Services RPC"
 
 #: src/providers/smb/ui/labels.ts:27 src/providers/smb/ui/labels.ts:128
+#: src/providers/nfs/ui/options.ts:20 src/providers/nfs/ui/export-page.tsx:220
 msgid "Security"
 msgstr "Sécurité"
 
@@ -1603,6 +1581,7 @@ msgid "Options of $0"
 msgstr "Options de $0"
 
 #: src/providers/smb/ui/vfs-card.tsx:151
+#: src/providers/nfs/ui/client-dialog.tsx:90
 msgid "Not set"
 msgstr "Non défini"
 
@@ -1625,6 +1604,8 @@ msgid "The module is removed from vfs objects."
 msgstr "Le module est retiré de vfs objects."
 
 #: src/providers/smb/ui/vfs-card.tsx:211 src/providers/smb/ui/vfs-card.tsx:261
+#: src/providers/nfs/ui/export-page.tsx:233
+#: src/providers/nfs/ui/client-dialog.tsx:232
 msgid "Options"
 msgstr "Options"
 
@@ -1672,33 +1653,1075 @@ msgstr "Les modules ajoutent des fonctions comme la corbeille, la prise en charg
 msgid "SMB share (Windows, macOS, Linux)"
 msgstr "Partage SMB (Windows, macOS, Linux)"
 
-#: src/providers/smb/backend.ts:65
-msgid "Command $0 failed"
-msgstr "La commande $0 a échoué"
-
-#: src/providers/smb/backend.ts:76
-msgid "Command failed"
-msgstr "La commande a échoué"
-
-#: src/providers/smb/backend.ts:169
+#: src/providers/smb/backend.ts:131
 msgid "Unexpected output of testparm"
 msgstr "Sortie inattendue de testparm"
 
-#: src/providers/smb/backend.ts:188
+#: src/providers/smb/backend.ts:148
 msgid "The configuration is not valid"
 msgstr "La configuration n'est pas valide"
 
-#: src/providers/smb/backend.ts:229
-msgid "The configuration file was changed by someone else. Reload it and try again."
-msgstr "Le fichier de configuration a été modifié par ailleurs. Rechargez-le et recommencez."
+#: src/providers/nfs/ui/options.ts:19 src/providers/nfs/ui/exports.tsx:198
+msgid "User mapping"
+msgstr "Correspondance des utilisateurs"
 
-#: src/providers/smb/backend.ts:230
-msgid "Writing the configuration failed"
-msgstr "L'écriture de la configuration a échoué"
+#: src/providers/nfs/ui/options.ts:21
+msgid "Advanced"
+msgstr "Avancé"
+
+#: src/providers/nfs/ui/options.ts:64
+msgid "Enter a number."
+msgstr "Saisissez un nombre."
+
+#: src/providers/nfs/ui/options.ts:72
+msgid "Read only is the default."
+msgstr "La lecture seule est la valeur par défaut."
+
+#: src/providers/nfs/ui/options.ts:73 src/providers/nfs/ui/export-page.tsx:189
+#: src/providers/nfs/ui/exports.tsx:195
+msgid "Read and write"
+msgstr "Lecture et écriture"
+
+#: src/providers/nfs/ui/options.ts:80
+msgid "Writes"
+msgstr "Écritures"
+
+#: src/providers/nfs/ui/options.ts:81
+msgid "Asynchronous writes are faster, but a crash of the server can lose or corrupt data."
+msgstr "Les écritures asynchrones sont plus rapides, mais un arrêt brutal du serveur peut perdre ou corrompre des données."
+
+#: src/providers/nfs/ui/options.ts:82
+msgid "Synchronous"
+msgstr "Synchrones"
+
+#: src/providers/nfs/ui/options.ts:82
+msgid "Asynchronous"
+msgstr "Asynchrones"
+
+#: src/providers/nfs/ui/options.ts:89
+msgid "Group related writes"
+msgstr "Regrouper les écritures proches"
+
+#: src/providers/nfs/ui/options.ts:90
+msgid "The server delays a write slightly when another one is expected. Turn it off for many small unrelated writes."
+msgstr "Le serveur retarde légèrement une écriture quand une autre est attendue. Désactivez-le pour de nombreuses petites écritures sans lien."
+
+#: src/providers/nfs/ui/options.ts:97
+msgid "Subtree check"
+msgstr "Vérification du sous-arbre"
+
+#: src/providers/nfs/ui/options.ts:98
+msgid "Checks that each file is inside the exported directory. Useful for read only subdirectories of a file system; causes problems with renamed files."
+msgstr "Vérifie que chaque fichier se trouve dans le dossier exporté. Utile pour des sous-dossiers en lecture seule d'un système de fichiers ; pose problème avec les fichiers renommés."
+
+#: src/providers/nfs/ui/options.ts:106 src/providers/nfs/ui/export-page.tsx:220
+msgid "Root of the client"
+msgstr "Root du client"
+
+#: src/providers/nfs/ui/options.ts:107
+msgid "By default, requests of root on the client use the anonymous account."
+msgstr "Par défaut, les requêtes de root sur le client utilisent le compte anonyme."
+
+#: src/providers/nfs/ui/options.ts:109 src/providers/nfs/ui/options.ts:121
+msgid "Mapped to the anonymous account"
+msgstr "Associé au compte anonyme"
+
+#: src/providers/nfs/ui/options.ts:110
+msgid "Has root rights"
+msgstr "A les droits root"
+
+#: src/providers/nfs/ui/options.ts:117
+msgid "Other users of the client"
+msgstr "Autres utilisateurs du client"
+
+#: src/providers/nfs/ui/options.ts:118
+msgid "Map every user to the anonymous account, for example for a public directory."
+msgstr "Associe chaque utilisateur au compte anonyme, par exemple pour un dossier public."
+
+#: src/providers/nfs/ui/options.ts:120
+msgid "Keep their identity"
+msgstr "Gardent leur identité"
+
+#: src/providers/nfs/ui/options.ts:128
+msgid "Anonymous user ID"
+msgstr "Identifiant utilisateur anonyme"
+
+#: src/providers/nfs/ui/options.ts:129
+msgid "User ID of the anonymous account, 65534 by default."
+msgstr "Identifiant utilisateur du compte anonyme, 65534 par défaut."
+
+#: src/providers/nfs/ui/options.ts:137
+msgid "Anonymous group ID"
+msgstr "Identifiant de groupe anonyme"
+
+#: src/providers/nfs/ui/options.ts:138
+msgid "Group ID of the anonymous account, 65534 by default."
+msgstr "Identifiant de groupe du compte anonyme, 65534 par défaut."
+
+#: src/providers/nfs/ui/options.ts:146
+msgid "Authentication flavors"
+msgstr "Méthodes d'authentification"
+
+#: src/providers/nfs/ui/options.ts:147
+msgid "sys trusts the user IDs sent by the client; krb5 uses Kerberos, krb5i adds integrity checks and krb5p encryption. Preferred flavors come first."
+msgstr "sys fait confiance aux identifiants envoyés par le client ; krb5 utilise Kerberos, krb5i ajoute le contrôle d'intégrité et krb5p le chiffrement. Les méthodes préférées viennent en premier."
+
+#: src/providers/nfs/ui/options.ts:161
+msgid "Transport security (TLS)"
+msgstr "Sécurité du transport (TLS)"
+
+#: src/providers/nfs/ui/options.ts:162
+msgid "Restricts access to clients using RPC with TLS. Needs tlshd on the server."
+msgstr "Réserve l'accès aux clients utilisant RPC avec TLS. Nécessite tlshd sur le serveur."
+
+#: src/providers/nfs/ui/options.ts:164
+msgid "none"
+msgstr "aucune"
+
+#: src/providers/nfs/ui/options.ts:174 src/providers/nfs/ui/exports.tsx:206
+msgid "Client ports"
+msgstr "Ports des clients"
+
+#: src/providers/nfs/ui/options.ts:175
+msgid "By default, requests must come from a port below 1024. Some clients, such as macOS, need insecure."
+msgstr "Par défaut, les requêtes doivent venir d'un port inférieur à 1024. Certains clients, comme macOS, ont besoin de insecure."
+
+#: src/providers/nfs/ui/options.ts:177
+msgid "Below 1024 only (secure)"
+msgstr "Inférieurs à 1024 uniquement (secure)"
+
+#: src/providers/nfs/ui/options.ts:178
+msgid "Any port (insecure)"
+msgstr "N'importe quel port (insecure)"
+
+#: src/providers/nfs/ui/options.ts:185
+msgid "Lock requests"
+msgstr "Demandes de verrou"
+
+#: src/providers/nfs/ui/options.ts:186
+msgid "Old clients send locks without credentials; turn the check off if files can only be locked when everybody can read them."
+msgstr "Les anciens clients envoient des verrous sans identification ; désactivez le contrôle si seuls les fichiers lisibles par tous peuvent être verrouillés."
+
+#: src/providers/nfs/ui/options.ts:188
+msgid "Authenticated"
+msgstr "Authentifiées"
+
+#: src/providers/nfs/ui/options.ts:189
+msgid "Not authenticated"
+msgstr "Non authentifiées"
+
+#: src/providers/nfs/ui/options.ts:196
+msgid "File systems mounted below"
+msgstr "Systèmes de fichiers montés en dessous"
+
+#: src/providers/nfs/ui/options.ts:197
+msgid "With crossmnt, clients also see the file systems mounted inside this directory."
+msgstr "Avec crossmnt, les clients voient aussi les systèmes de fichiers montés dans ce dossier."
+
+#: src/providers/nfs/ui/options.ts:199 src/providers/nfs/ui/export-page.tsx:259
+#: src/providers/nfs/ui/exports.tsx:51
+msgid "Not exported"
+msgstr "Non exporté"
+
+#: src/providers/nfs/ui/options.ts:200
+msgid "Exported with the same options (crossmnt)"
+msgstr "Exportés avec les mêmes options (crossmnt)"
+
+#: src/providers/nfs/ui/options.ts:207
+msgid "Visibility inside the parent export (NFSv3)"
+msgstr "Visibilité dans l'export parent (NFSv3)"
+
+#: src/providers/nfs/ui/options.ts:208
+msgid "nohide shows this file system to NFSv3 clients that mounted its parent. NFSv4 always shows it."
+msgstr "nohide montre ce système de fichiers aux clients NFSv3 qui ont monté son parent. NFSv4 le montre toujours."
+
+#: src/providers/nfs/ui/options.ts:209
+msgid "Visible (nohide)"
+msgstr "Visible (nohide)"
+
+#: src/providers/nfs/ui/options.ts:215
+msgid "File system ID"
+msgstr "Identifiant du système de fichiers"
+
+#: src/providers/nfs/ui/options.ts:216
+msgid "Needed for file systems without UUID or device. root or 0 marks the root of the NFSv4 tree."
+msgstr "Nécessaire pour les systèmes de fichiers sans UUID ni périphérique. root ou 0 désigne la racine de l'arborescence NFSv4."
+
+#: src/providers/nfs/ui/options.ts:218
+msgid "Enter root, a number or a UUID."
+msgstr "Saisissez root, un nombre ou un UUID."
+
+#: src/providers/nfs/ui/options.ts:224
+#: src/providers/nfs/ui/client-dialog.tsx:99
+msgid "Export only when mounted"
+msgstr "N'exporter que si monté"
+
+#: src/providers/nfs/ui/options.ts:225
+msgid "With an empty value the directory must be a mount point; with a path, that path must be a mount point. Prevents exporting an empty directory when a disk failed to mount."
+msgstr "Sans valeur, le dossier doit être un point de montage ; avec un chemin, ce chemin doit être un point de montage. Évite d'exporter un dossier vide quand un disque n'a pas été monté."
+
+#: src/providers/nfs/ui/options.ts:226
+msgid "this directory"
+msgstr "ce dossier"
+
+#: src/providers/nfs/ui/options.ts:232
+msgid "pNFS"
+msgstr "pNFS"
+
+#: src/providers/nfs/ui/options.ts:233
+msgid "Lets NFSv4.1 clients access the storage directly when the file system supports it."
+msgstr "Permet aux clients NFSv4.1 d'accéder directement au stockage quand le système de fichiers le prend en charge."
+
+#: src/providers/nfs/ui/options.ts:240
+msgid "Security labels (NFSv4.2)"
+msgstr "Étiquettes de sécurité (NFSv4.2)"
+
+#: src/providers/nfs/ui/options.ts:241
+msgid "Clients can read and set SELinux labels. Every client needs the same policy."
+msgstr "Les clients peuvent lire et définir les étiquettes SELinux. Tous les clients doivent avoir la même politique."
+
+#: src/providers/nfs/ui/options.ts:247
+msgid "Disable READDIRPLUS (NFSv3)"
+msgstr "Désactiver READDIRPLUS (NFSv3)"
+
+#: src/providers/nfs/ui/options.ts:248
+msgid "NFSv3 clients fall back to READDIR."
+msgstr "Les clients NFSv3 utilisent alors READDIR."
+
+#: src/providers/nfs/ui/options.ts:254
+msgid "Referral"
+msgstr "Redirection"
+
+#: src/providers/nfs/ui/options.ts:255
+msgid "Sends clients to another location: path@host[+host][:path@host...]."
+msgstr "Envoie les clients vers un autre emplacement : chemin@hôte[+hôte][:chemin@hôte...]."
+
+#: src/providers/nfs/ui/options.ts:262
+msgid "Replicas"
+msgstr "Répliques"
+
+#: src/providers/nfs/ui/options.ts:263
+msgid "Alternative locations given to clients that ask: path@host[+host][:path@host...]."
+msgstr "Emplacements de remplacement donnés aux clients qui les demandent : chemin@hôte[+hôte][:chemin@hôte...]."
+
+#: src/providers/nfs/ui/options.ts:270
+msgid "Re-export of an NFS mount"
+msgstr "Réexport d'un montage NFS"
+
+#: src/providers/nfs/ui/options.ts:271
+msgid "Assigns file system IDs to NFS mounts exported again. Needs Linux 5.19."
+msgstr "Attribue des identifiants aux montages NFS réexportés. Nécessite Linux 5.19."
+
+#: src/providers/nfs/ui/options.ts:367
+msgid "Server threads"
+msgstr "Threads du serveur"
+
+#: src/providers/nfs/ui/options.ts:367
+msgid "Number of kernel threads serving requests. Raise it for many clients."
+msgstr "Nombre de threads noyau qui traitent les requêtes. Augmentez-le pour de nombreux clients."
+
+#: src/providers/nfs/ui/options.ts:368
+msgid "NFSv3"
+msgstr "NFSv3"
+
+#: src/providers/nfs/ui/options.ts:369
+msgid "NFSv4"
+msgstr "NFSv4"
+
+#: src/providers/nfs/ui/options.ts:370
+msgid "NFSv4.0"
+msgstr "NFSv4.0"
+
+#: src/providers/nfs/ui/options.ts:371
+msgid "NFSv4.1"
+msgstr "NFSv4.1"
+
+#: src/providers/nfs/ui/options.ts:372
+msgid "NFSv4.2"
+msgstr "NFSv4.2"
+
+#: src/providers/nfs/ui/options.ts:373
+msgid "TCP"
+msgstr "TCP"
+
+#: src/providers/nfs/ui/options.ts:374
+msgid "UDP"
+msgstr "UDP"
+
+#: src/providers/nfs/ui/options.ts:374
+msgid "Only NFSv3 can use UDP."
+msgstr "Seul NFSv3 peut utiliser UDP."
+
+#: src/providers/nfs/ui/options.ts:375
+msgid "Listen address"
+msgstr "Adresse d'écoute"
+
+#: src/providers/nfs/ui/options.ts:375
+msgid "Host name or address to listen on; empty: every address."
+msgstr "Nom d'hôte ou adresse d'écoute ; vide : toutes les adresses."
+
+#: src/providers/nfs/ui/options.ts:376
+msgid "NFS port"
+msgstr "Port NFS"
+
+#: src/providers/nfs/ui/options.ts:377
+msgid "Grace time (seconds)"
+msgstr "Délai de grâce (secondes)"
+
+#: src/providers/nfs/ui/options.ts:377
+msgid "Time given to clients to recover their locks after a restart."
+msgstr "Temps laissé aux clients pour récupérer leurs verrous après un redémarrage."
+
+#: src/providers/nfs/ui/options.ts:378
+msgid "Lease time (seconds)"
+msgstr "Durée de bail (secondes)"
+
+#: src/providers/nfs/ui/options.ts:378
+msgid "NFSv4 clients renew their state within this time."
+msgstr "Les clients NFSv4 renouvellent leur état dans ce délai."
+
+#: src/providers/nfs/ui/options.ts:379
+msgid "RDMA"
+msgstr "RDMA"
+
+#: src/providers/nfs/ui/options.ts:380
+msgid "RDMA port"
+msgstr "Port RDMA"
+
+#: src/providers/nfs/ui/options.ts:381
+msgid "Debug level"
+msgstr "Niveau de débogage"
+
+#: src/providers/nfs/ui/options.ts:382
+msgid "mountd port"
+msgstr "Port de mountd"
+
+#: src/providers/nfs/ui/options.ts:382
+msgid "0 picks a free port at each start. Set a fixed port to allow NFSv3 through a firewall."
+msgstr "0 choisit un port libre à chaque démarrage. Fixez un port pour autoriser NFSv3 à travers un pare-feu."
+
+#: src/providers/nfs/ui/options.ts:383
+msgid "Look up groups on the server"
+msgstr "Rechercher les groupes sur le serveur"
+
+#: src/providers/nfs/ui/options.ts:383
+msgid "Use the groups of the user on the server instead of the ones sent by the client, which are limited to 16."
+msgstr "Utilise les groupes de l'utilisateur sur le serveur plutôt que ceux envoyés par le client, limités à 16."
+
+#: src/providers/nfs/ui/options.ts:384
+msgid "mountd threads"
+msgstr "Threads de mountd"
+
+#: src/providers/nfs/ui/options.ts:385
+msgid "Maximum open files of mountd"
+msgstr "Nombre maximal de fichiers ouverts par mountd"
+
+#: src/providers/nfs/ui/options.ts:386
+msgid "Reverse DNS lookup of clients"
+msgstr "Résolution DNS inverse des clients"
+
+#: src/providers/nfs/ui/options.ts:387
+msgid "Cache by address"
+msgstr "Cache par adresse"
+
+#: src/providers/nfs/ui/options.ts:388
+msgid "Cache time to live (seconds)"
+msgstr "Durée de vie du cache (secondes)"
+
+#: src/providers/nfs/ui/options.ts:389
+msgid "State directory"
+msgstr "Dossier d'état"
+
+#: src/providers/nfs/ui/options.ts:390
+msgid "High availability callout"
+msgstr "Programme de haute disponibilité"
+
+#: src/providers/nfs/ui/options.ts:391
+msgid "mountd debug facilities"
+msgstr "Domaines de débogage de mountd"
+
+#: src/providers/nfs/ui/options.ts:392
+msgid "statd port"
+msgstr "Port de statd"
+
+#: src/providers/nfs/ui/options.ts:392 src/providers/nfs/ui/options.ts:399
+msgid "Set a fixed port to allow NFSv3 locking through a firewall."
+msgstr "Fixez un port pour autoriser les verrous NFSv3 à travers un pare-feu."
+
+#: src/providers/nfs/ui/options.ts:393
+msgid "statd outgoing port"
+msgstr "Port sortant de statd"
+
+#: src/providers/nfs/ui/options.ts:394
+msgid "statd host name"
+msgstr "Nom d'hôte de statd"
+
+#: src/providers/nfs/ui/options.ts:395
+msgid "statd state directory"
+msgstr "Dossier d'état de statd"
+
+#: src/providers/nfs/ui/options.ts:396
+msgid "statd high availability callout"
+msgstr "Programme de haute disponibilité de statd"
+
+#: src/providers/nfs/ui/options.ts:397
+msgid "Do not notify clients at start"
+msgstr "Ne pas prévenir les clients au démarrage"
+
+#: src/providers/nfs/ui/options.ts:398
+msgid "statd debug level"
+msgstr "Niveau de débogage de statd"
+
+#: src/providers/nfs/ui/options.ts:399
+msgid "lockd TCP port"
+msgstr "Port TCP de lockd"
+
+#: src/providers/nfs/ui/options.ts:400
+msgid "lockd UDP port"
+msgstr "Port UDP de lockd"
+
+#: src/providers/nfs/ui/options.ts:401
+msgid "Root of the exported paths"
+msgstr "Racine des chemins exportés"
+
+#: src/providers/nfs/ui/options.ts:401
+msgid "Every export path is then relative to this directory."
+msgstr "Chaque chemin d'export est alors relatif à ce dossier."
+
+#: src/providers/nfs/ui/options.ts:402
+msgid "exportfs debug level"
+msgstr "Niveau de débogage d'exportfs"
+
+#: src/providers/nfs/ui/options.ts:403
+msgid "exportd: look up groups on the server"
+msgstr "exportd : rechercher les groupes sur le serveur"
+
+#: src/providers/nfs/ui/options.ts:404
+msgid "exportd threads"
+msgstr "Threads d'exportd"
+
+#: src/providers/nfs/ui/options.ts:405
+msgid "exportd: cache by address"
+msgstr "exportd : cache par adresse"
+
+#: src/providers/nfs/ui/options.ts:406
+msgid "exportd: cache time to live (seconds)"
+msgstr "exportd : durée de vie du cache (secondes)"
+
+#: src/providers/nfs/ui/options.ts:407
+msgid "exportd state directory"
+msgstr "Dossier d'état d'exportd"
+
+#: src/providers/nfs/ui/options.ts:408
+msgid "Client tracking database directory"
+msgstr "Dossier de la base de suivi des clients"
+
+#: src/providers/nfs/ui/options.ts:409
+msgid "nfsdcld debug level"
+msgstr "Niveau de débogage de nfsdcld"
+
+#: src/providers/nfs/ui/options.ts:410
+msgid "Legacy client tracking directory"
+msgstr "Ancien dossier de suivi des clients"
+
+#: src/providers/nfs/ui/options.ts:411
+msgid "Always notify clients at start"
+msgstr "Toujours prévenir les clients au démarrage"
+
+#: src/providers/nfs/ui/options.ts:412
+msgid "Notification retry time (seconds)"
+msgstr "Délai de relance des notifications (secondes)"
+
+#: src/providers/nfs/ui/options.ts:413
+msgid "End the grace period after notifying"
+msgstr "Terminer le délai de grâce après notification"
+
+#: src/providers/nfs/ui/options.ts:414
+msgid "Kerberos principal of the server"
+msgstr "Principal Kerberos du serveur"
+
+#: src/providers/nfs/ui/export-page.tsx:90
+msgid "exportfs skips exports whose directory does not exist."
+msgstr "exportfs ignore les exports dont le dossier n'existe pas."
+
+#: src/providers/nfs/ui/export-page.tsx:95
+msgid "Mount point of $0 ($1)"
+msgstr "Point de montage de $0 ($1)"
+
+#: src/providers/nfs/ui/export-page.tsx:96
+msgid "On $0 ($1), mounted at $2"
+msgstr "Sur $0 ($1), monté sur $2"
+
+#: src/providers/nfs/ui/export-page.tsx:126
+msgid "$0 is not exported"
+msgstr "$0 n'est pas exporté"
+
+#: src/providers/nfs/ui/export-page.tsx:142
+msgid "Edit description"
+msgstr "Modifier la description"
+
+#: src/providers/nfs/ui/export-page.tsx:143
+#: src/providers/nfs/ui/exports.tsx:115
+msgid "Change path"
+msgstr "Changer le chemin"
+
+#: src/providers/nfs/ui/export-page.tsx:150
+msgid "Remove $0?"
+msgstr "Retirer $0 ?"
+
+#: src/providers/nfs/ui/export-page.tsx:151
+msgid "This client loses access to the export."
+msgstr "Ce client perd l'accès à l'export."
+
+#: src/providers/nfs/ui/export-page.tsx:162
+#: src/providers/nfs/ui/client-dialog.tsx:209
+msgid "Default options of the line"
+msgstr "Options par défaut de la ligne"
+
+#: src/providers/nfs/ui/export-page.tsx:169
+msgid "the default options"
+msgstr "les options par défaut"
+
+#: src/providers/nfs/ui/export-page.tsx:179
+msgid "Everyone anonymous"
+msgstr "Tous anonymes"
+
+#: src/providers/nfs/ui/export-page.tsx:212
+msgid "Add client"
+msgstr "Ajouter un client"
+
+#: src/providers/nfs/ui/export-page.tsx:216
+msgid "Hosts allowed to mount this directory, with their options. The first matching client applies."
+msgstr "Hôtes autorisés à monter ce dossier, avec leurs options. Le premier client correspondant s'applique."
+
+#: src/providers/nfs/ui/export-page.tsx:219
+#: src/providers/nfs/ui/export-page.tsx:300
+msgid "Clients"
+msgstr "Clients"
+
+#: src/providers/nfs/ui/export-page.tsx:220
+#: src/providers/nfs/ui/export-page.tsx:233
+#: src/providers/nfs/ui/client-dialog.tsx:218
+#: src/providers/nfs/ui/exports.tsx:190
+msgid "Client"
+msgstr "Client"
+
+#: src/providers/nfs/ui/export-page.tsx:220
+#: src/providers/nfs/ui/client-dialog.tsx:231
+msgid "Other options"
+msgstr "Autres options"
+
+#: src/providers/nfs/ui/export-page.tsx:229
+msgid "Options in effect according to exportfs, defaults included."
+msgstr "Options en vigueur selon exportfs, valeurs par défaut comprises."
+
+#: src/providers/nfs/ui/export-page.tsx:232
+#: src/providers/nfs/ui/export-page.tsx:301
+msgid "Applied options"
+msgstr "Options appliquées"
+
+#: src/providers/nfs/ui/export-page.tsx:234
+msgid "exportfs does not export this directory"
+msgstr "exportfs n'exporte pas ce dossier"
+
+#: src/providers/nfs/ui/export-page.tsx:235
+msgid "Check that the directory exists and that the host names resolve."
+msgstr "Vérifiez que le dossier existe et que les noms d'hôtes sont résolus."
+
+#: src/providers/nfs/ui/export-page.tsx:250
+msgid "This line is ambiguous"
+msgstr "Cette ligne est ambiguë"
+
+#: src/providers/nfs/ui/export-page.tsx:275
+msgid "Mount command"
+msgstr "Commande de montage"
+
+#: src/providers/nfs/ui/export-page.tsx:283
+msgid "Line of /etc/fstab"
+msgstr "Ligne de /etc/fstab"
+
+#: src/providers/nfs/ui/export-page.tsx:291
+msgid "Defined in"
+msgstr "Défini dans"
+
+#: src/providers/nfs/ui/export-page.tsx:293
+msgid "$0, line $1"
+msgstr "$0, ligne $1"
+
+#: src/providers/nfs/ui/clients-card.tsx:53
+#: src/providers/nfs/ui/clients-card.tsx:56
+msgid "NFS clients"
+msgstr "Clients NFS"
+
+#: src/providers/nfs/ui/clients-card.tsx:57
+msgid "Address"
+msgstr "Adresse"
+
+#: src/providers/nfs/ui/clients-card.tsx:57 src/app.tsx:140
+msgid "Name"
+msgstr "Nom"
+
+#: src/providers/nfs/ui/clients-card.tsx:59
+msgid "This kernel does not list NFS clients"
+msgstr "Ce noyau ne liste pas les clients NFS"
+
+#: src/providers/nfs/ui/clients-card.tsx:59
+msgid "No NFSv4 client is connected"
+msgstr "Aucun client NFSv4 connecté"
+
+#: src/providers/nfs/ui/clients-card.tsx:60
+msgid "NFSv3 clients do not keep a session and are not listed."
+msgstr "Les clients NFSv3 ne gardent pas de session et ne sont pas listés."
+
+#: src/providers/nfs/ui/clients-card.tsx:72
+msgid "The server releases the open files and locks of this client. The client can connect again."
+msgstr "Le serveur libère les fichiers ouverts et les verrous de ce client. Le client peut se reconnecter."
+
+#: src/providers/nfs/ui/common.tsx:56
+msgid "Restarting the NFS server failed"
+msgstr "Le redémarrage du serveur NFS a échoué"
+
+#: src/providers/nfs/ui/client-dialog.tsx:38
+msgid "Help about $0"
+msgstr "Aide sur $0"
+
+#: src/providers/nfs/ui/client-dialog.tsx:130
+msgid "Unknown option $0: exportfs will refuse it."
+msgstr "Option inconnue $0 : exportfs la refusera."
+
+#: src/providers/nfs/ui/client-dialog.tsx:137
+msgid "Enter a host, a network or *."
+msgstr "Saisissez un hôte, un réseau ou *."
+
+#: src/providers/nfs/ui/client-dialog.tsx:138
+msgid "Blanks, parentheses, commas, quotes and # are not allowed."
+msgstr "Les espaces, parenthèses, virgules, guillemets et # sont interdits."
+
+#: src/providers/nfs/ui/client-dialog.tsx:139
+msgid "A host cannot start with a dash."
+msgstr "Un hôte ne peut pas commencer par un tiret."
+
+#: src/providers/nfs/ui/client-dialog.tsx:140
+msgid "Invalid host."
+msgstr "Hôte non valide."
+
+#: src/providers/nfs/ui/client-dialog.tsx:152
+msgid "Every host"
+msgstr "Tous les hôtes"
+
+#: src/providers/nfs/ui/client-dialog.tsx:153
+msgid "Local network"
+msgstr "Réseau local"
+
+#: src/providers/nfs/ui/client-dialog.tsx:158
+msgid "Host name, address, network (10.0.0.0/8), *.domain or @netgroup"
+msgstr "Nom d'hôte, adresse, réseau (10.0.0.0/8), *.domaine ou @netgroup"
+
+#: src/providers/nfs/ui/client-dialog.tsx:210
+msgid "Add a client"
+msgstr "Ajouter un client"
+
+#: src/providers/nfs/ui/client-dialog.tsx:210
+msgid "Client $0"
+msgstr "Client $0"
+
+#: src/providers/nfs/ui/client-dialog.tsx:221
+msgid "* lets every host connect."
+msgstr "* autorise tous les hôtes."
+
+#: src/providers/nfs/ui/client-dialog.tsx:243
+msgid "Option, then Enter"
+msgstr "Option, puis Entrée"
+
+#: src/providers/nfs/ui/client-dialog.tsx:255
+msgid "Options not listed above, as written in /etc/exports."
+msgstr "Options absentes de la liste ci-dessus, telles qu'écrites dans /etc/exports."
+
+#: src/providers/nfs/ui/settings-page.tsx:45
+msgid "Server"
+msgstr "Serveur"
+
+#: src/providers/nfs/ui/settings-page.tsx:46
+msgid "Protocol versions, transports and capacity of the kernel NFS server."
+msgstr "Versions du protocole, transports et capacité du serveur NFS du noyau."
+
+#: src/providers/nfs/ui/settings-page.tsx:56
+msgid "Firewall ports"
+msgstr "Ports pour le pare-feu"
+
+#: src/providers/nfs/ui/settings-page.tsx:57
+msgid "NFSv4 only needs port 2049. NFSv3 also uses mountd, statd and lockd, on random ports unless they are fixed here."
+msgstr "NFSv4 n'utilise que le port 2049. NFSv3 utilise aussi mountd, statd et lockd, sur des ports aléatoires sauf s'ils sont fixés ici."
+
+#: src/providers/nfs/ui/settings-page.tsx:160
+msgid "default"
+msgstr "défaut"
+
+#: src/providers/nfs/ui/settings-page.tsx:179
+msgid "Use letters, digits, dots, dashes and underscores."
+msgstr "Utilisez des lettres, chiffres, points, tirets et soulignés."
+
+#: src/providers/nfs/ui/settings-page.tsx:182
+#: src/providers/nfs/ui/settings-page.tsx:233
+msgid "Add a setting"
+msgstr "Ajouter un réglage"
+
+#: src/providers/nfs/ui/settings-page.tsx:189
+#: src/providers/nfs/ui/settings-page.tsx:242
+msgid "Section"
+msgstr "Section"
+
+#: src/providers/nfs/ui/settings-page.tsx:192
+#: src/providers/nfs/ui/settings-page.tsx:242
+msgid "Setting"
+msgstr "Réglage"
+
+#: src/providers/nfs/ui/settings-page.tsx:195
+msgid "Section and name as documented in nfs.conf(5)."
+msgstr "Section et nom tels que documentés dans nfs.conf(5)."
+
+#: src/providers/nfs/ui/settings-page.tsx:201
+msgid "This setting is not described here; the value is written as entered."
+msgstr "Ce réglage n'est pas décrit ici ; la valeur est écrite telle quelle."
+
+#: src/providers/nfs/ui/settings-page.tsx:229
+msgid "Show every setting"
+msgstr "Afficher tous les réglages"
+
+#: src/providers/nfs/ui/settings-page.tsx:229
+msgid "Show the settings that are set"
+msgstr "Afficher les réglages définis"
+
+#: src/providers/nfs/ui/settings-page.tsx:238
+msgid "Settings of $0 and $1, as read by nfsconf."
+msgstr "Réglages de $0 et $1, tels que lus par nfsconf."
+
+#: src/providers/nfs/ui/settings-page.tsx:241
+#: src/providers/nfs/ui/settings-page.tsx:299
+msgid "All settings"
+msgstr "Tous les réglages"
+
+#: src/providers/nfs/ui/settings-page.tsx:243
+msgid "No setting is set: every default applies."
+msgstr "Aucun réglage défini : toutes les valeurs par défaut s'appliquent."
+
+#: src/providers/nfs/ui/settings-page.tsx:250
+msgid "(not described here)"
+msgstr "(non décrit ici)"
+
+#: src/providers/nfs/ui/settings-page.tsx:260
+msgid "The setting is removed from nfs.conf and the default applies."
+msgstr "Le réglage est retiré de nfs.conf et la valeur par défaut s'applique."
+
+#: src/providers/nfs/ui/settings-page.tsx:284
+msgid "NFS server settings"
+msgstr "Réglages du serveur NFS"
+
+#: src/providers/nfs/ui/settings-page.tsx:294
+msgid "nfsconf is not available"
+msgstr "nfsconf n'est pas disponible"
+
+#: src/providers/nfs/ui/settings-page.tsx:295
+msgid "This version of nfs-utils has no nfsconf; the settings cannot be changed here."
+msgstr "Cette version de nfs-utils n'a pas nfsconf ; les réglages ne peuvent pas être modifiés ici."
+
+#: src/providers/nfs/ui/status-card.tsx:51
+msgid "Cannot inspect the NFS installation"
+msgstr "Impossible d'examiner l'installation de NFS"
+
+#: src/providers/nfs/ui/status-card.tsx:61
+msgid "Install the NFS server"
+msgstr "Installer le serveur NFS"
+
+#: src/providers/nfs/ui/status-card.tsx:64
+#: src/providers/nfs/ui/status-card.tsx:100
+#: src/providers/nfs/ui/status-card.tsx:129
+msgid "NFS server"
+msgstr "Serveur NFS"
+
+#: src/providers/nfs/ui/status-card.tsx:68
+msgid "Install the $0 package to share directories with Linux and UNIX computers."
+msgstr "Installez le paquet $0 pour partager des dossiers avec des ordinateurs Linux et UNIX."
+
+#: src/providers/nfs/ui/status-card.tsx:69
+msgid "The NFS server shares directories with Linux and UNIX computers. It is not installed."
+msgstr "Le serveur NFS partage des dossiers avec des ordinateurs Linux et UNIX. Il n'est pas installé."
+
+#: src/providers/nfs/ui/status-card.tsx:79
+msgid "Server settings"
+msgstr "Réglages du serveur"
+
+#: src/providers/nfs/ui/status-card.tsx:87
+msgid "The firewall does not allow NFS yet"
+msgstr "Le pare-feu n'autorise pas encore NFS"
+
+#: src/providers/nfs/ui/status-card.tsx:88
+msgid "The firewall does not allow mountd (NFSv3) yet"
+msgstr "Le pare-feu n'autorise pas encore mountd (NFSv3)"
+
+#: src/providers/nfs/ui/status-card.tsx:89
+msgid "The firewall does not allow rpcbind (NFSv3) yet"
+msgstr "Le pare-feu n'autorise pas encore rpcbind (NFSv3)"
+
+#: src/providers/nfs/ui/status-card.tsx:105
+msgid "Some export lines are ambiguous"
+msgstr "Certaines lignes d'export sont ambiguës"
+
+#: src/providers/nfs/ui/status-card.tsx:109
+msgid "nfs-utils $0"
+msgstr "nfs-utils $0"
+
+#: src/providers/nfs/ui/status-card.tsx:112
+msgid "Protocol versions"
+msgstr "Versions du protocole"
+
+#: src/providers/nfs/ui/status-card.tsx:116
+msgid "The kernel NFS server is not running."
+msgstr "Le serveur NFS du noyau ne tourne pas."
+
+#: src/providers/nfs/ui/status-card.tsx:120
+msgid "Configuration"
+msgstr "Configuration"
+
+#: src/providers/nfs/ui/status-card.tsx:130
+msgid "Kernel NFS server, mountd and the related services."
+msgstr "Serveur NFS du noyau, mountd et les services associés."
+
+#: src/providers/nfs/ui/status-card.tsx:132
+msgid "RPC port mapper"
+msgstr "Annuaire de ports RPC"
+
+#: src/providers/nfs/ui/status-card.tsx:133
+msgid "Needed by NFSv3 clients (rpcbind)."
+msgstr "Nécessaire aux clients NFSv3 (rpcbind)."
+
+#: src/providers/nfs/ui/status-card.tsx:137
+msgid "No NFS server systemd unit was found."
+msgstr "Aucune unité systemd de serveur NFS n'a été trouvée."
+
+#: src/providers/nfs/ui/exports.tsx:47
+msgid "NFSv4 root"
+msgstr "Racine NFSv4"
+
+#: src/providers/nfs/ui/exports.tsx:49
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: src/providers/nfs/ui/exports.tsx:56
+msgid "read and write"
+msgstr "lecture et écriture"
+
+#: src/providers/nfs/ui/exports.tsx:56
+msgid "read only"
+msgstr "lecture seule"
+
+#: src/providers/nfs/ui/exports.tsx:72
+msgid "Stop exporting $0?"
+msgstr "Arrêter d'exporter $0 ?"
+
+#: src/providers/nfs/ui/exports.tsx:73
+msgid "The line is removed from the exports and clients lose access. The directory and its files are kept."
+msgstr "La ligne est retirée des exports et les clients perdent l'accès. Le dossier et ses fichiers sont conservés."
+
+#: src/providers/nfs/ui/exports.tsx:87
+msgid "Change the path of $0"
+msgstr "Changer le chemin de $0"
+
+#: src/providers/nfs/ui/exports.tsx:87
+msgid "New path"
+msgstr "Nouveau chemin"
+
+#: src/providers/nfs/ui/exports.tsx:88
+msgid "Change"
+msgstr "Changer"
+
+#: src/providers/nfs/ui/exports.tsx:89
+msgid "Clients that mounted the old path need to mount the new one."
+msgstr "Les clients qui ont monté l'ancien chemin doivent monter le nouveau."
+
+#: src/providers/nfs/ui/exports.tsx:94
+msgid "Enter a different path."
+msgstr "Saisissez un autre chemin."
+
+#: src/providers/nfs/ui/exports.tsx:174
+msgid "Create NFS export"
+msgstr "Créer un export NFS"
+
+#: src/providers/nfs/ui/exports.tsx:179
+msgid "/srv/nfs"
+msgstr "/srv/nfs"
+
+#: src/providers/nfs/ui/exports.tsx:182
+msgid "This directory is already exported; a second line is added."
+msgstr "Ce dossier est déjà exporté ; une seconde ligne est ajoutée."
+
+#: src/providers/nfs/ui/exports.tsx:188
+msgid "Create the directory (owner root, permissions 755)"
+msgstr "Créer le dossier (propriétaire root, permissions 755)"
+
+#: src/providers/nfs/ui/exports.tsx:192
+msgid "* lets every host connect. Add more clients on the export page."
+msgstr "* autorise tous les hôtes. Ajoutez d'autres clients sur la page de l'export."
+
+#: src/providers/nfs/ui/exports.tsx:200
+msgid "Keep user identities"
+msgstr "Garder l'identité des utilisateurs"
+
+#: src/providers/nfs/ui/exports.tsx:200
+msgid "Root of the client uses the anonymous account (root_squash)."
+msgstr "Root du client utilise le compte anonyme (root_squash)."
+
+#: src/providers/nfs/ui/exports.tsx:202
+msgid "Trust root of the client"
+msgstr "Faire confiance à root du client"
+
+#: src/providers/nfs/ui/exports.tsx:202
+msgid "For diskless clients or backups (no_root_squash)."
+msgstr "Pour des clients sans disque ou des sauvegardes (no_root_squash)."
+
+#: src/providers/nfs/ui/exports.tsx:204
+msgid "Everyone uses the anonymous account"
+msgstr "Tout le monde utilise le compte anonyme"
+
+#: src/providers/nfs/ui/exports.tsx:204
+msgid "For a public directory (all_squash)."
+msgstr "Pour un dossier public (all_squash)."
+
+#: src/providers/nfs/ui/exports.tsx:208
+msgid "Accept any port (needed by macOS)"
+msgstr "Accepter n'importe quel port (nécessaire pour macOS)"
+
+#: src/providers/nfs/ui/exports.tsx:212
+msgid "Line added to /etc/exports"
+msgstr "Ligne ajoutée à /etc/exports"
+
+#: src/providers/nfs/ui/exports.tsx:232
+msgid "Written as a comment at the end of the line."
+msgstr "Écrite en commentaire à la fin de la ligne."
+
+#: src/providers/nfs/provider.tsx:39 src/providers/nfs/state.tsx:188
+msgid "Restart the NFS server to apply the new settings"
+msgstr "Redémarrez le serveur NFS pour appliquer les nouveaux réglages"
+
+#: src/providers/nfs/provider.tsx:52
+msgid "NFS export (Linux, UNIX)"
+msgstr "Export NFS (Linux, UNIX)"
+
+#: src/providers/nfs/backend.ts:152
+msgid "exportfs rejects this configuration"
+msgstr "exportfs refuse cette configuration"
+
+#: src/providers/nfs/state.tsx:174
+msgid "Saved with warnings from exportfs"
+msgstr "Enregistré avec des avertissements d'exportfs"
+
+#: src/lib/history.tsx:32
+msgid "No difference."
+msgstr "Aucune différence."
+
+#: src/lib/history.tsx:36
+msgid "… $0 unchanged lines"
+msgstr "… $0 lignes inchangées"
+
+#: src/lib/history.tsx:53
+msgid "Version of $0"
+msgstr "Version du $0"
+
+#: src/lib/history.tsx:54
+msgid "Changes needed to go back to this version of $0."
+msgstr "Modifications nécessaires pour revenir à cette version de $0."
+
+#: src/lib/history.tsx:66
+msgid "Restore this version"
+msgstr "Restaurer cette version"
+
+#: src/lib/history.tsx:68
+msgid "Close"
+msgstr "Fermer"
+
+#: src/lib/history.tsx:116
+msgid "Administrative access is required to see the history."
+msgstr "L'accès administrateur est nécessaire pour consulter l'historique."
+
+#: src/lib/history.tsx:119
+msgid "Date of the change"
+msgstr "Date de la modification"
+
+#: src/lib/history.tsx:121
+msgid "Saved copy"
+msgstr "Copie enregistrée"
+
+#: src/lib/history.tsx:125
+msgid "No previous version"
+msgstr "Aucune version précédente"
+
+#: src/lib/history.tsx:126
+msgid "A copy of the configuration is kept in $0 before every change made here."
+msgstr "Une copie de la configuration est conservée dans $0 avant chaque modification faite ici."
+
+#: src/lib/history.tsx:139
+msgid "Compare"
+msgstr "Comparer"
+
+#: src/lib/services.tsx:49
+msgid "Running"
+msgstr "En cours d'exécution"
+
+#: src/lib/services.tsx:50
+msgid "Starting"
+msgstr "Démarrage"
+
+#: src/lib/services.tsx:51
+msgid "Stopping"
+msgstr "Arrêt"
+
+#: src/lib/services.tsx:52
+msgid "Failed to start"
+msgstr "Échec du démarrage"
+
+#: src/lib/services.tsx:53
+msgid "Not running"
+msgstr "Arrêté"
+
+#: src/lib/services.tsx:97
+msgid "Start and enable $0"
+msgstr "Démarrer et activer $0"
+
+#: src/lib/services.tsx:101
+msgid "Status unavailable"
+msgstr "État indisponible"
+
+#: src/lib/services.tsx:103
+msgid "Not started at boot"
+msgstr "Non lancé au démarrage"
+
+#: src/lib/services.tsx:104
+msgid "Started at boot"
+msgstr "Lancé au démarrage"
+
+#: src/lib/services.tsx:108
+msgid "$0 service"
+msgstr "Service $0"
 
 #: src/lib/doc.tsx:20
 msgid "No documentation available."
 msgstr "Aucune documentation disponible."
+
+#: src/lib/system.ts:48
+msgid "Command $0 failed"
+msgstr "La commande $0 a échoué"
+
+#: src/lib/system.ts:59
+msgid "Command failed"
+msgstr "La commande a échoué"
+
+#: src/lib/system.ts:133
+msgid "The configuration file was changed by someone else. Reload it and try again."
+msgstr "Le fichier de configuration a été modifié par ailleurs. Rechargez-le et recommencez."
+
+#: src/lib/system.ts:134
+msgid "Writing the configuration failed"
+msgstr "L'écriture de la configuration a échoué"
 
 #: src/lib/utils.tsx:59
 msgid "$0 and $1"
@@ -1723,10 +2746,6 @@ msgstr "Défini ailleurs"
 #: src/app.tsx:123
 msgid "Filter by name or path"
 msgstr "Filtrer par nom ou chemin"
-
-#: src/app.tsx:140
-msgid "Name"
-msgstr "Nom"
 
 #: src/app.tsx:145
 msgid "Connections"
@@ -1957,6 +2976,18 @@ msgid "network drive"
 msgstr "lecteur réseau"
 
 #: src/manifest.json:0
+msgid "nfs"
+msgstr "nfs"
+
+#: src/manifest.json:0
+msgid "exports"
+msgstr "exports"
+
+#: src/manifest.json:0
+msgid "nfs export"
+msgstr "export nfs"
+
+#: src/manifest.json:0
 msgid "Samba configuration reference (smb.conf)"
 msgstr "Référence de la configuration Samba (smb.conf, en anglais)"
 
@@ -1964,10 +2995,14 @@ msgstr "Référence de la configuration Samba (smb.conf, en anglais)"
 msgid "Samba file serving guide"
 msgstr "Guide du serveur de fichiers Samba (en anglais)"
 
+#: src/manifest.json:0
+msgid "NFS export table (exports(5))"
+msgstr "Table des exports NFS (exports(5), en anglais)"
+
 #: org.cockpit_project.shares.metainfo.xml:6
-msgid "Manage SMB file shares with Samba"
-msgstr "Gérer les partages de fichiers SMB avec Samba"
+msgid "Manage SMB and NFS file shares"
+msgstr "Gérer les partages de fichiers SMB et NFS"
 
 #: org.cockpit_project.shares.metainfo.xml:8
-msgid "Create and manage SMB shares, every smb.conf parameter, Samba users, connected clients and the Samba services from the Cockpit web console."
-msgstr "Créez et gérez les partages SMB, chaque paramètre de smb.conf, les utilisateurs Samba, les clients connectés et les services Samba depuis la console web Cockpit."
+msgid "Create and manage SMB shares with every smb.conf parameter, Samba users and connected clients, and NFS exports with every export option and the nfs.conf server settings, from the Cockpit web console."
+msgstr "Créez et gérez les partages SMB avec chaque paramètre de smb.conf, les utilisateurs Samba et les clients connectés, ainsi que les exports NFS avec chaque option d'export et les réglages de nfs.conf, depuis la console web Cockpit."

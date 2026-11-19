@@ -73,7 +73,7 @@ export const SmbSessionsCard = () => {
     return (
         <Card isPlain className="ct-card" id="smb-sessions">
             <CardHeader>
-                <CardTitle component="h2">{_("Connected clients")}</CardTitle>
+                <CardTitle component="h2">{_("SMB clients")}</CardTitle>
             </CardHeader>
             {!!error && <CardBody><ErrorAlert error={error} /></CardBody>}
             <ListingTable aria-label={_("Connected clients")} variant="compact" id="smb-sessions-list"

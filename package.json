@@ -1,6 +1,6 @@
 {
   "name": "shares",
-  "description": "Cockpit module to manage file shares (SMB/Samba)",
+  "description": "Cockpit module to manage file shares (SMB and NFS)",
   "type": "module",
   "main": "index.js",
   "repository": "",

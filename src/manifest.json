@@ -2,7 +2,6 @@
     "requires": {
         "cockpit": "300"
     },
-
     "menu": {
         "index": {
             "label": "File sharing",
@@ -15,11 +14,29 @@
                 {
                     "label": "Samba file serving guide",
                     "url": "https://wiki.samba.org/index.php/Setting_up_Samba_as_a_Standalone_Server"
+                },
+                {
+                    "label": "NFS export table (exports(5))",
+                    "url": "https://man7.org/linux/man-pages/man5/exports.5.html"
                 }
             ],
             "keywords": [
                 {
-                    "matches": ["samba", "smb", "cifs", "share", "shares", "file sharing", "windows", "smb.conf", "netbios", "network drive"]
+                    "matches": [
+                        "samba",
+                        "smb",
+                        "cifs",
+                        "share",
+                        "shares",
+                        "file sharing",
+                        "windows",
+                        "smb.conf",
+                        "netbios",
+                        "network drive",
+                        "nfs",
+                        "exports",
+                        "nfs export"
+                    ]
                 }
             ]
         }

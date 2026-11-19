@@ -1,7 +1,7 @@
 Name: cockpit-shares
 Version: %{VERSION}
 Release: 1%{?dist}
-Summary: Cockpit page to manage file shares (SMB/Samba)
+Summary: Cockpit page to manage file shares (SMB and NFS)
 License: LGPL-2.1-or-later
 URL:     https://cockpit-project.org
 
@@ -32,12 +32,14 @@ BuildRequires: nodejs-esbuild
 Requires: cockpit-bridge
 Recommends: samba
 Recommends: samba-common-tools
+Suggests: nfs-utils
 
 %{NPM_PROVIDES}
 
 %description
-Create and manage SMB shares, every smb.conf parameter, Samba users,
-connected clients and the Samba services from the Cockpit web console.
+Create and manage SMB shares with every smb.conf parameter, Samba users
+and connected clients, and NFS exports with every export option and the
+nfs.conf server settings, from the Cockpit web console.
 
 %prep
 %autosetup -n %{name}

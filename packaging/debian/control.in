@@ -5,13 +5,15 @@ Maintainer: François Rousselet <7969502+frousselet@users.noreply.github.com>
 Installed-Size: @SIZE@
 Depends: cockpit-bridge
 Recommends: cockpit-ws, samba, samba-common-bin
-Suggests: wsdd
+Suggests: wsdd, nfs-kernel-server
 Section: admin
 Priority: optional
 Homepage: https://github.com/frousselet/cockpit-shares
-Description: Cockpit page to manage file shares (SMB/Samba)
- Create and manage SMB shares, every smb.conf parameter, Samba users,
- connected clients and the Samba services from the Cockpit web console.
+Description: Cockpit page to manage file shares (SMB and NFS)
+ Create and manage SMB shares with every smb.conf parameter, Samba users
+ and connected clients, and NFS exports with every export option and the
+ nfs.conf server settings, from the Cockpit web console.
  .
- Every change is validated by testparm before it is written, and the
- previous versions of smb.conf are kept so that they can be restored.
+ Every change is validated by testparm or exportfs before it is written,
+ and the previous versions of the files are kept so that they can be
+ restored.

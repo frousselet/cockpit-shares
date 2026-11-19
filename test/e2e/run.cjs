@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: LGPL-2.1-or-later
 //
-// End to end test of the SMB page against a running Cockpit on this machine.
-// It changes /etc/samba/smb.conf and the Samba account database: only run it
-// on a disposable test system.
+// End to end test of the SMB and NFS pages against a running Cockpit on this
+// machine. It changes /etc/samba/smb.conf, the Samba account database,
+// /etc/exports and /etc/nfs.conf: only run it on a disposable test system.
 //
 //   COCKPIT_URL=http://127.0.0.1:9090 node test/e2e/run.cjs
 //
@@ -63,6 +63,9 @@ async function until(fn, what, timeout = 15000) {
 
     // create a share through the dialog
     await f.click('#create-share');
+    // with several protocols the button opens a menu
+    if (await f.$('#smb-create-share') === null && await f.$('text=SMB share (Windows, macOS, Linux)') !== null)
+        await f.click('text=SMB share (Windows, macOS, Linux)');
     await f.waitForSelector('#smb-create-share');
     const pathInput = '#smb-create-share .pf-v6-c-text-input-group__text-input';
     await f.click(pathInput);
@@ -160,9 +163,9 @@ async function until(fn, what, timeout = 15000) {
 
     // history: every change above left a copy that can be compared
     f = await open('/smb/history');
-    await f.waitForSelector('#smb-config-history tbody tr');
+    await f.waitForSelector('#config-history tbody tr');
     assert.ok(await f.$('textarea') === null, 'the configuration file must not be editable as text');
-    await f.click('#smb-config-history tbody tr >> text=Compare');
+    await f.click('#config-history tbody tr >> text=Compare');
     await f.waitForSelector('#smb-backup-dialog .shares-diff');
     step('history of changes');
 
@@ -176,6 +179,95 @@ async function until(fn, what, timeout = 15000) {
     await f.click('text=Enable');
     await until(() => !/Account Flags:\s+\[D/.test(execFileSync('pdbedit', ['-v', '-u', USER], { encoding: 'utf8' })), 'user enabled');
     step('disable and enable a Samba account');
+
+    // === NFS (skipped when exportfs is not installed) ===
+    let haveNfs = true;
+    try {
+        execFileSync('sh', ['-c', 'command -v exportfs'], { stdio: 'ignore' });
+    } catch {
+        haveNfs = false;
+    }
+    if (haveNfs) {
+        const EXPORTS = '/etc/exports';
+        const exportsLine = p => fs.readFileSync(EXPORTS, 'utf8').split('\n').find(l => l.startsWith(p + ' ')) ?? null;
+        const exported = () => execFileSync('exportfs', ['-v'], { encoding: 'utf8' });
+        assert.equal(exportsLine('/srv/e2e-nfs'), null, 'remove /srv/e2e-nfs from /etc/exports before running this test');
+        assert.ok(!fs.existsSync('/srv/e2e-nfs'), 'remove /srv/e2e-nfs before running this test');
+
+        f = await open('/');
+        await f.waitForSelector('#shares-list tbody');
+        await f.click('#create-share');
+        await f.click('text=NFS export (Linux, UNIX)');
+        await f.waitForSelector('#nfs-create-export');
+        const nfsPath = '#nfs-create-export .pf-v6-c-text-input-group__text-input';
+        await f.click(nfsPath);
+        await f.type(nfsPath, '/srv/e2e-nfs');
+        await f.click('text=Create /srv/e2e-nfs');
+        await f.waitForSelector('#nfs-create-mkdir');
+        await f.click('#nfs-create-ro');
+        await f.click('#nfs-create-export-submit');
+        await f.waitForSelector('#nfs-export-page');
+        await until(() => exportsLine('/srv/e2e-nfs') === '/srv/e2e-nfs *(ro,sync,no_subtree_check)', 'export line');
+        await until(() => /\/srv\/e2e-nfs\s+<world>\(.*\bro\b/.test(exported()), 'exported by exportfs');
+        assert.ok(fs.statSync('/srv/e2e-nfs').isDirectory());
+        step('create an NFS export and its directory');
+
+        await f.click('#nfs-add-client');
+        await f.waitForSelector('#nfs-client-dialog');
+        await f.click('#nfs-client-host input');
+        await page.keyboard.type('10.20.0.0/16');
+        await f.click('text=Use "10.20.0.0/16"');
+        await f.selectOption('#nfs-opt-all_squash', 'all_squash');
+        await f.fill('#nfs-opt-anonuid', '1000');
+        await f.click('#nfs-client-dialog-submit');
+        await until(() => exportsLine('/srv/e2e-nfs') === '/srv/e2e-nfs *(ro,sync,no_subtree_check) 10.20.0.0/16(rw,sync,no_subtree_check,all_squash,anonuid=1000)', 'client added');
+        step('add a client with options');
+
+        // an option that exportfs refuses is not written
+        await f.click('#nfs-export-clients tr[data-client="10.20.0.0/16"] button.pf-m-link');
+        await f.waitForSelector('#nfs-client-dialog');
+        await f.fill('#nfs-opt-other', 'bogus_option');
+        await page.keyboard.press('Enter');
+        assert.ok(await f.isDisabled('#nfs-client-dialog-submit'), 'unknown options block the dialog');
+        await f.click('#nfs-client-dialog-cancel');
+        step('unknown options are refused');
+
+        await f.click('#nfs-export-actions');
+        await f.click('text=Change path');
+        await f.fill('#nfs-change-path-input', '/srv/e2e-nfs-moved');
+        await f.click('#nfs-change-path-submit');
+        await until(() => exportsLine('/srv/e2e-nfs-moved') !== null && exportsLine('/srv/e2e-nfs') === null, 'path changed');
+        step('change the path of an export');
+
+        await f.waitForSelector('#nfs-export-actions');
+        await f.click('#nfs-export-actions');
+        await f.click('.pf-m-danger >> text=Delete');
+        await f.click('#nfs-delete-export-submit');
+        await until(() => exportsLine('/srv/e2e-nfs-moved') === null, 'export deleted');
+        step('delete an export');
+
+        // server settings through nfsconf
+        const before = fs.readFileSync('/etc/nfs.conf', 'utf8');
+        f = await open('/nfs/settings');
+        await f.waitForSelector('#nfs-conf-server-edit');
+        await f.click('#nfs-conf-server-edit');
+        await f.waitForSelector('#nfs-conf-server');
+        await f.fill('#nfs-conf-nfsd-threads', '12');
+        await f.click('#nfs-conf-server-submit');
+        await until(() => /^threads = 12$/m.test(fs.readFileSync('/etc/nfs.conf', 'utf8')), 'threads written');
+        await f.waitForSelector('[data-setting="nfsd.threads"] >> text=12');
+        await f.click('#nfs-conf-server-edit');
+        await f.fill('#nfs-conf-nfsd-threads', '');
+        await f.click('#nfs-conf-server-submit');
+        await until(() => !/^threads = 12$/m.test(fs.readFileSync('/etc/nfs.conf', 'utf8')), 'threads removed');
+        assert.ok(fs.readFileSync('/etc/nfs.conf', 'utf8').includes('[nfsd]'), 'nfs.conf keeps its sections');
+        assert.notEqual(before.length, 0);
+        step('change and reset a server setting');
+
+        f = await open('/nfs/history');
+        await f.waitForSelector('#config-history tbody tr');
+        step('NFS history of changes');
+    }
 
     assert.deepEqual(errors, []);
     console.log('all end to end checks passed');

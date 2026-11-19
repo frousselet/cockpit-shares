@@ -3,11 +3,12 @@
   <id>org.cockpit_project.shares</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>File sharing</name>
-  <summary>Manage SMB file shares with Samba</summary>
+  <summary>Manage SMB and NFS file shares</summary>
   <description>
     <p>
-      Create and manage SMB shares, every smb.conf parameter, Samba users,
-      connected clients and the Samba services from the Cockpit web console.
+      Create and manage SMB shares with every smb.conf parameter, Samba users
+      and connected clients, and NFS exports with every export option and
+      the nfs.conf server settings, from the Cockpit web console.
     </p>
   </description>
   <extends>org.cockpit_project.cockpit</extends>

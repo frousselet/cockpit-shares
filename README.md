@@ -80,8 +80,8 @@ parser's reading with `testparm` on several files.
 
 ## Installing on Debian or Ubuntu
 
-Download `cockpit-shares_VERSION_all.deb` and install it with apt, which also
-pulls the dependencies:
+Download `cockpit-shares_VERSION_all.deb` from the GitHub releases and install
+it with apt, which also pulls the dependencies:
 
 ```bash
 sudo apt install ./cockpit-shares_0.1.0_all.deb
@@ -93,6 +93,12 @@ machine running Cockpit. Build it with:
 ```bash
 make deb
 ```
+
+Every pushed tag starts the Release workflow (`.github/workflows/release.yml`):
+it runs the unit tests, builds the package and attaches it to the release of
+the tag, created when it does not exist. The package version is the tag name
+without a leading `v`. For a tag that existed before the workflow, run it from
+the Actions tab ("Run workflow") with the tag name.
 
 ## Building and installing
 
